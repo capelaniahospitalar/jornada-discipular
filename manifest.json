@@ -1,0 +1,25 @@
+{
+  "name": "Aos Pés do Mestre Jesus",
+  "short_name": "Jornada Discipular",
+  "description": "Jornada Discipular — Hospital Adventista Silvestre",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#042C53",
+  "theme_color": "#042C53",
+  "orientation": "portrait",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
