@@ -60,7 +60,7 @@ html,body{font-family:var(--ff-body);background:var(--bg);color:var(--text);min-
 .hdr::after{content:'';position:absolute;bottom:-30px;right:-20px;width:120px;height:120px;border:1px solid rgba(255,255,255,0.06);border-radius:50%}
 .hdr::before{content:'';position:absolute;top:-20px;left:-30px;width:100px;height:100px;border:1px solid rgba(255,255,255,0.04);border-radius:50%}
 .eyebrow{font-size:10px;letter-spacing:2.5px;color:rgba(255,255,255,0.45);text-transform:uppercase;margin-bottom:5px;font-family:var(--ff-body)}
-.app-title{font-family:var(--ff-serif);font-size:22px;font-weight:500;color:#fff;line-height:1.3;margin-bottom:1.1rem}
+.app-title{font-family:var(--ff-serif);font-size:24px;font-weight:500;color:#fff;line-height:1.3;margin-bottom:1.1rem}
 .title-row{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
 .life-stamp{flex-shrink:0;border:1.5px solid var(--gold-mid);border-radius:50%;width:62px;height:62px;display:flex;align-items:center;justify-content:center;text-align:center;transform:rotate(8deg);opacity:.9;margin-top:2px;background:rgba(255,255,255,0.15);backdrop-filter:blur(2px)}
 .life-stamp span{font-family:var(--ff-serif);font-size:9px;font-weight:700;letter-spacing:1px;color:var(--gold-mid);line-height:1.25;text-transform:uppercase;text-shadow:0 1px 2px rgba(0,0,0,0.3)}
@@ -81,7 +81,7 @@ html,body{font-family:var(--ff-body);background:var(--bg);color:var(--text);min-
 /* ── STREAK ── */
 .streak{margin:.75rem 1rem 0;background:var(--blue-pale);border:0.5px solid var(--blue-light);border-radius:var(--radius-sm);padding:.65rem 1rem;display:flex;align-items:center;gap:10px}
 .streak-ico{font-size:20px}
-.streak-txt{font-size:13px;color:var(--navy2);flex:1;line-height:1.4}
+.streak-txt{font-size:15px;color:var(--navy2);flex:1;line-height:1.4}
 .streak-num{font-size:20px;font-weight:600;color:var(--blue)}
 
 /* ── NEXT CARD ── */
@@ -98,7 +98,7 @@ html,body{font-family:var(--ff-body);background:var(--bg);color:var(--text);min-
 .phase-comprometido{background:var(--gold-light);color:var(--gold)}
 .next-num{font-size:11px;color:var(--text3);margin-bottom:3px}
 .next-title{font-family:var(--ff-serif);font-size:16px;font-weight:500;color:var(--text);margin-bottom:.75rem}
-.start-btn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;background:var(--blue);color:#fff;border:none;border-radius:var(--radius-sm);padding:.75rem;font-size:14px;font-weight:500;cursor:pointer;font-family:var(--ff-body);transition:background .15s;letter-spacing:.2px}
+.start-btn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;background:var(--blue);color:#fff;border:none;border-radius:var(--radius-sm);padding:.75rem;font-size:16px;font-weight:500;cursor:pointer;font-family:var(--ff-body);transition:background .15s;letter-spacing:.2px}
 .start-btn:hover{background:var(--navy2)}
 .start-btn svg{width:14px;height:14px;fill:#fff}
 
@@ -110,10 +110,10 @@ html,body{font-family:var(--ff-body);background:var(--bg);color:var(--text);min-
 
 /* ── PROGRESS TRACK ── */
 .progress-section{margin:.75rem 1rem 0;background:var(--card);border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:.9rem 1rem}
-.progress-lbl{font-size:12px;color:var(--text3);margin-bottom:.5rem}
+.progress-lbl{font-size:13px;color:var(--text3);margin-bottom:.5rem}
 .track-outer{background:var(--bg);border-radius:10px;height:8px;overflow:hidden}
 .track-inner{height:100%;background:var(--blue-mid);border-radius:10px;transition:width .5s ease}
-.track-pct{font-size:12px;color:var(--blue);margin-top:4px;font-weight:500}
+.track-pct{font-size:13px;color:var(--blue);margin-top:4px;font-weight:500}
 
 /* ── BADGES ── */
 .sec-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);padding:.85rem 1rem .3rem;font-family:var(--ff-body)}
@@ -141,7 +141,7 @@ html,body{font-family:var(--ff-body);background:var(--bg);color:var(--text);min-
 .back-btn{background:none;border:none;color:rgba(255,255,255,0.65);cursor:pointer;padding:0;line-height:1;flex-shrink:0;font-size:18px}
 .sh-info{flex:1;min-width:0}
 .sh-step{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.45)}
-.sh-title{font-family:var(--ff-serif);font-size:14.5px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
+.sh-title{font-family:var(--ff-serif);font-size:16px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
 .sh-xp{font-size:11px;color:var(--gold-mid);background:rgba(212,160,23,0.15);border:0.5px solid rgba(212,160,23,0.3);border-radius:4px;padding:2px 7px;flex-shrink:0}
 .study-prog-bar{height:3px;background:rgba(255,255,255,0.08)}
 .study-prog-fill{height:100%;background:var(--gold-mid);transition:width .35s ease}
@@ -153,44 +153,48 @@ html,body{font-family:var(--ff-body);background:var(--bg);color:var(--text);min-
 
 .study-body{padding:.75rem 1rem 1.5rem;display:flex;flex-direction:column;gap:.75rem;flex:1}
 
-.phase-tag{font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:.4rem;font-family:var(--ff-body)}
+.phase-tag{font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:.4rem;font-family:var(--ff-body)}
 .tag-opening{color:var(--teal)}.tag-question{color:var(--purple)}.tag-content{color:var(--blue)}.tag-apply{color:var(--gold)}.tag-close{color:var(--teal)}.tag-deeper{color:var(--purple)}.tag-insight{color:var(--coral)}.tag-decision{color:var(--navy2)}
 
 .content-card{background:var(--card);border:0.5px solid var(--border);border-radius:var(--radius);padding:1.15rem 1rem}
-.body-text{font-size:15px;line-height:1.7;color:var(--text);font-family:var(--ff-body)}
+.body-text{font-size:17px;line-height:1.7;color:var(--text);font-family:var(--ff-body)}
 .body-text strong{font-weight:600;color:var(--navy)}
 .body-text em{font-style:italic;color:var(--text2)}
 
-.verse-btn{display:inline-flex;align-items:center;gap:5px;background:var(--blue-pale);border:0.5px solid var(--blue-light);border-radius:6px;padding:5px 10px;font-size:12px;color:var(--navy2);cursor:pointer;margin-top:.55rem;transition:background .15s;font-family:var(--ff-body);font-weight:500}
-.verse-btn:hover{background:var(--blue-light)}
-.verse-btn svg{width:13px;height:13px;flex-shrink:0}
-.verse-expand{background:var(--blue-pale);border:0.5px solid var(--blue-light);border-radius:0 8px 8px 8px;padding:.75rem .9rem;margin-top:.3rem;font-size:13.5px;color:var(--navy);font-family:var(--ff-serif);font-style:italic;line-height:1.65;border-left:3px solid var(--blue-mid)}
-.verse-expand .vref{font-size:11px;font-style:normal;font-weight:600;color:var(--blue);display:block;margin-bottom:3px;font-family:var(--ff-body)}
+.verse-btn{display:flex;align-items:center;gap:8px;width:100%;background:var(--blue-pale);border:1.5px solid var(--blue-light);border-radius:8px;padding:.65rem .9rem;font-size:14px;color:var(--navy2);cursor:pointer;margin-top:.6rem;transition:background .15s,border-color .15s;font-family:var(--ff-body);font-weight:600;text-align:left}
+.verse-btn:hover,.verse-btn:active{background:var(--blue-light);border-color:var(--blue-mid)}
+.verse-btn svg.book-icon{width:16px;height:16px;flex-shrink:0;color:var(--blue-mid)}
+.verse-btn .verse-ref-text{flex:1}
+.verse-btn .verse-hint{font-size:11px;font-weight:400;color:var(--blue-mid);opacity:.85}
+.verse-btn svg.chevron{width:14px;height:14px;flex-shrink:0;transition:transform .2s;color:var(--blue-mid)}
+.verse-btn[aria-expanded="true"] svg.chevron{transform:rotate(180deg)}
+.verse-expand{background:var(--blue-pale);border:0.5px solid var(--blue-light);border-radius:0 8px 8px 8px;padding:.75rem .9rem;margin-top:.3rem;font-size:15.5px;color:var(--navy);font-family:var(--ff-serif);font-style:italic;line-height:1.65;border-left:3px solid var(--blue-mid)}
+.verse-expand .vref{font-size:13px;font-style:normal;font-weight:600;color:var(--blue);display:block;margin-bottom:3px;font-family:var(--ff-body)}
 
 .apply-box{background:var(--gold-pale);border:0.5px solid rgba(184,134,11,0.25);border-radius:var(--radius-sm);padding:1rem}
-.apply-lbl{font-size:10px;font-weight:600;color:var(--gold);letter-spacing:.9px;text-transform:uppercase;margin-bottom:.4rem;font-family:var(--ff-body)}
-.apply-text{font-size:14px;color:#3D2B00;line-height:1.6;font-family:var(--ff-body)}
+.apply-lbl{font-size:11px;font-weight:600;color:var(--gold);letter-spacing:.9px;text-transform:uppercase;margin-bottom:.4rem;font-family:var(--ff-body)}
+.apply-text{font-size:16px;color:#3D2B00;line-height:1.6;font-family:var(--ff-body)}
 .apply-text em{font-family:var(--ff-serif);font-size:14.5px}
 
 .insight-box{background:var(--purple-light);border:0.5px solid rgba(92,61,143,0.2);border-radius:var(--radius-sm);padding:1rem}
-.insight-lbl{font-size:10px;font-weight:600;color:var(--purple);letter-spacing:.9px;text-transform:uppercase;margin-bottom:.4rem;font-family:var(--ff-body)}
-.insight-text{font-size:14px;color:#2D1B6B;line-height:1.6}
+.insight-lbl{font-size:11px;font-weight:600;color:var(--purple);letter-spacing:.9px;text-transform:uppercase;margin-bottom:.4rem;font-family:var(--ff-body)}
+.insight-text{font-size:16px;color:#2D1B6B;line-height:1.6}
 
 .decision-box{background:var(--navy);border-radius:var(--radius);padding:1.2rem 1rem;text-align:center}
-.decision-lbl{font-size:10px;letter-spacing:1.5px;color:rgba(255,255,255,0.5);text-transform:uppercase;margin-bottom:.5rem;font-family:var(--ff-body)}
+.decision-lbl{font-size:11px;letter-spacing:1.5px;color:rgba(255,255,255,0.5);text-transform:uppercase;margin-bottom:.5rem;font-family:var(--ff-body)}
 .decision-text{font-family:var(--ff-serif);font-size:15px;color:#fff;line-height:1.6;font-style:italic}
 
 .opts-list{display:flex;flex-direction:column;gap:7px;margin-top:.5rem}
-.opt-btn{background:var(--bg);border:0.5px solid rgba(0,0,0,0.13);border-radius:var(--radius-sm);padding:.75rem .9rem;text-align:left;font-size:14px;color:var(--text);cursor:pointer;transition:all .15s;line-height:1.45;font-family:var(--ff-body)}
+.opt-btn{background:var(--bg);border:0.5px solid rgba(0,0,0,0.13);border-radius:var(--radius-sm);padding:.75rem .9rem;text-align:left;font-size:16px;color:var(--text);cursor:pointer;transition:all .15s;line-height:1.45;font-family:var(--ff-body)}
 .opt-btn:hover:not(:disabled){background:var(--blue-pale);border-color:var(--blue-light);color:var(--navy)}
 .opt-btn.chosen{background:var(--teal-light);border-color:var(--teal);color:#04342C}
 .opt-btn.chosen-warn{background:#FEF9EC;border-color:#F0C040;color:#3D2B00}
-.feedback{border-radius:var(--radius-sm);padding:.7rem .9rem;font-size:13.5px;line-height:1.55;margin-top:.35rem}
+.feedback{border-radius:var(--radius-sm);padding:.7rem .9rem;font-size:15.5px;line-height:1.55;margin-top:.35rem}
 .fb-ok{background:var(--teal-light);border:0.5px solid var(--teal);color:#04342C}
 .fb-warm{background:#FEF9EC;border:0.5px solid #F0C040;color:#3D2B00}
 .fb-reflect{background:var(--blue-pale);border:0.5px solid var(--blue-light);color:var(--navy2)}
 
-.nav-btn{background:var(--navy);color:#fff;border:none;border-radius:var(--radius-sm);padding:.85rem;font-size:14px;font-weight:500;cursor:pointer;width:100%;font-family:var(--ff-body);transition:background .15s;letter-spacing:.2px}
+.nav-btn{background:var(--navy);color:#fff;border:none;border-radius:var(--radius-sm);padding:.85rem;font-size:16px;font-weight:500;cursor:pointer;width:100%;font-family:var(--ff-body);transition:background .15s;letter-spacing:.2px}
 .nav-btn:hover{background:var(--navy2)}
 .nav-btn:disabled{background:var(--border);color:var(--text3);cursor:default}
 
@@ -200,7 +204,7 @@ html,body{font-family:var(--ff-body);background:var(--bg);color:var(--text);min-
 .complete-wrap{padding:2rem 1.5rem 2.5rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.85rem;flex:1;justify-content:center}
 .comp-icon{font-size:52px}
 .comp-title{font-family:var(--ff-serif);font-size:20px;font-weight:500;color:var(--text)}
-.comp-sub{font-size:14px;color:var(--text2);line-height:1.6;max-width:290px}
+.comp-sub{font-size:16px;color:var(--text2);line-height:1.6;max-width:290px}
 .comp-xp{display:inline-flex;align-items:center;gap:6px;background:var(--gold-pale);border:0.5px solid rgba(184,134,11,0.25);border-radius:20px;padding:5px 16px;font-size:13px;color:#3D2B00;font-weight:600}
 .comp-badge-wrap{background:var(--purple-light);border:0.5px solid rgba(92,61,143,0.2);border-radius:var(--radius-sm);padding:.9rem 1.25rem;text-align:center;width:100%}
 .comp-badge-lbl{font-size:10px;color:var(--purple);text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;font-family:var(--ff-body)}
@@ -242,9 +246,10 @@ html,body{font-family:var(--ff-body);background:var(--bg);color:var(--text);min-
 .tutor-wa{display:flex;align-items:center;gap:5px;background:#25D366;color:#fff;border:none;border-radius:var(--radius-sm);padding:.75rem 1rem;font-size:14px;font-weight:500;cursor:pointer;width:100%;justify-content:center;font-family:var(--ff-body);transition:background .15s}
 .tutor-wa:hover{background:#1da851}
 .tutor-wa svg{width:18px;height:18px;fill:#fff;flex-shrink:0}
-.tutor-btn-fixed{position:fixed;bottom:1rem;right:1rem;background:#25D366;color:#fff;border:none;border-radius:50px;padding:.6rem 1rem;font-size:13px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:6px;box-shadow:0 3px 12px rgba(0,0,0,0.2);z-index:100;font-family:var(--ff-body);transition:all .15s}
-.tutor-btn-fixed:hover{background:#1da851;transform:scale(1.03)}
-.tutor-btn-fixed svg{width:16px;height:16px;fill:#fff}
+.tutor-btn-fixed{position:fixed;bottom:.85rem;right:.85rem;background:#25D366;color:#fff;border:none;border-radius:50%;width:46px;height:46px;font-size:13px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 12px rgba(0,0,0,0.25);z-index:100;font-family:var(--ff-body);transition:all .15s}
+.tutor-btn-fixed:hover{background:#1da851;transform:scale(1.05)}
+.tutor-btn-fixed svg{width:22px;height:22px;fill:#fff}
+.tutor-btn-fixed.hidden-on-study{display:none}
 .tutor-select-wrap{text-align:center;padding:.5rem 0}
 
 /* ── PHASE 2: BOSSES, MISSIONS, JOURNAL ── */
@@ -275,7 +280,7 @@ html,body{font-family:var(--ff-body);background:var(--bg);color:var(--text);min-
 .mission-check{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;margin-top:1px;transition:all .15s;font-size:11px}
 .mission-check.done{background:var(--teal);border-color:var(--teal);color:#fff}
 .mission-info{flex:1}
-.mission-name{font-size:13.5px;color:var(--text);line-height:1.4;font-family:var(--ff-body)}
+.mission-name{font-size:14.5px;color:var(--text);line-height:1.4;font-family:var(--ff-body)}
 .mission-meta{font-size:10px;color:var(--text3);margin-top:2px}
 .mission-xp{font-size:10px;color:var(--gold);background:var(--gold-pale);border-radius:4px;padding:1px 5px;flex-shrink:0;border:0.5px solid rgba(184,134,11,0.2)}
 
@@ -286,7 +291,7 @@ html,body{font-family:var(--ff-body);background:var(--bg);color:var(--text);min-
 .journal-entry-hdr small{font-size:10px;color:rgba(255,255,255,0.45)}
 .journal-entry-body{padding:.85rem 1rem;display:flex;flex-direction:column;gap:.65rem}
 .journal-field label{font-size:10px;font-weight:600;color:var(--text3);letter-spacing:.8px;text-transform:uppercase;display:block;margin-bottom:3px;font-family:var(--ff-body)}
-.journal-field p{font-size:13.5px;color:var(--text2);line-height:1.6;font-family:var(--ff-body)}
+.journal-field p{font-size:15.5px;color:var(--text2);line-height:1.6;font-family:var(--ff-body)}
 .journal-field textarea{width:100%;border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:.65rem .85rem;font-size:14px;color:var(--text);font-family:var(--ff-body);resize:none;background:var(--bg);line-height:1.6;outline:none;transition:border .15s}
 .journal-field textarea:focus{border-color:var(--blue-mid)}
 .journal-tab-row{display:flex;gap:6px;padding:0 1rem}
@@ -297,12 +302,12 @@ html,body{font-family:var(--ff-body);background:var(--bg);color:var(--text);min-
 /* ── PHASE 3: AI ASSISTANT, SHARE, TUTOR PANEL ── */
 .ai-screen{padding:0;display:flex;flex-direction:column;height:calc(100vh - 56px)}
 .ai-messages{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.75rem}
-.ai-msg{max-width:88%;padding:.75rem .9rem;border-radius:12px;font-size:14px;line-height:1.6;font-family:var(--ff-body)}
+.ai-msg{max-width:88%;padding:.75rem .9rem;border-radius:12px;font-size:16px;line-height:1.6;font-family:var(--ff-body)}
 .ai-msg.user{background:var(--navy);color:#fff;align-self:flex-end;border-bottom-right-radius:3px}
 .ai-msg.bot{background:var(--card);border:0.5px solid var(--border);color:var(--text);align-self:flex-start;border-bottom-left-radius:3px}
 .ai-msg.bot.loading{color:var(--text3);font-style:italic}
 .ai-input-row{display:flex;gap:8px;padding:.75rem 1rem;background:var(--card);border-top:0.5px solid var(--border)}
-.ai-input{flex:1;border:0.5px solid var(--border);border-radius:20px;padding:.6rem 1rem;font-size:14px;font-family:var(--ff-body);outline:none;background:var(--bg);color:var(--text)}
+.ai-input{flex:1;border:0.5px solid var(--border);border-radius:20px;padding:.6rem 1rem;font-size:16px;font-family:var(--ff-body);outline:none;background:var(--bg);color:var(--text)}
 .ai-input:focus{border-color:var(--blue-mid)}
 .ai-send{background:var(--navy);color:#fff;border:none;border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:background .15s}
 .ai-send:hover{background:var(--navy2)}
@@ -337,9 +342,9 @@ html,body{font-family:var(--ff-body);background:var(--bg);color:var(--text);min-
 .welcome-hero::before{content:'';position:absolute;top:-30px;left:-40px;width:130px;height:130px;border:1px solid rgba(255,255,255,0.04);border-radius:50%}
 .welcome-brand{display:flex;flex-direction:row;align-items:center;gap:10px;margin-bottom:.75rem}.welcome-logo{flex-shrink:0;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.25));}.hospital-name-wrap{display:flex;flex-direction:column;gap:1px}.hospital-name-main{font-size:11px;font-weight:700;letter-spacing:.5px;color:#fff;font-family:var(--ff-body);line-height:1.2}.hospital-name-sub{font-size:13px;font-weight:700;letter-spacing:.3px;color:#00C8F0;font-family:var(--ff-body);line-height:1.2;text-shadow:0 0 12px rgba(0,200,240,0.8), 0 1px 4px rgba(0,0,0,0.6)}
 .welcome-center{text-align:center;margin-top:.1rem}.welcome-tag{font-size:10px;letter-spacing:3px;color:rgba(255,255,255,0.5);text-transform:uppercase;margin-bottom:.4rem;font-family:var(--ff-body)}
-.welcome-title{font-family:var(--ff-serif);font-size:26px;font-weight:600;color:#fff;line-height:1.25;margin-bottom:.3rem}
+.welcome-title{font-family:var(--ff-serif);font-size:28px;font-weight:600;color:#fff;line-height:1.25;margin-bottom:.3rem}
 .welcome-title em{color:#5DDDDD;font-style:normal}
-.welcome-subtitle{font-size:14px;color:rgba(255,255,255,0.65);line-height:1.55;max-width:300px;margin:0 auto;font-family:var(--ff-body)}
+.welcome-subtitle{font-size:16px;color:rgba(255,255,255,0.65);line-height:1.55;max-width:300px;margin:0 auto;font-family:var(--ff-body)}
 
 .welcome-body{padding:1.25rem 1rem;display:flex;flex-direction:column;gap:1rem}
 
@@ -372,7 +377,7 @@ html,body{font-family:var(--ff-body);background:var(--bg);color:var(--text);min-
 .guest-tutor-card.selected{border-color:var(--teal);border-style:solid;background:var(--teal-light)}
 .guest-header{display:flex;align-items:center;gap:10px}
 .guest-fields{display:flex;flex-direction:column;gap:6px}
-.guest-input{width:100%;border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:.6rem .85rem;font-size:14px;font-family:var(--ff-body);outline:none;background:var(--bg);color:var(--text);transition:border .15s}
+.guest-input{width:100%;border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:.6rem .85rem;font-size:16px;font-family:var(--ff-body);outline:none;background:var(--bg);color:var(--text);transition:border .15s}
 .guest-input:focus{border-color:var(--blue-mid)}
 .guest-confirm-btn{background:var(--teal);color:#fff;border:none;border-radius:var(--radius-sm);padding:.6rem;font-size:13px;cursor:pointer;font-family:var(--ff-body);width:100%}
 
@@ -817,8 +822,9 @@ function V(ref, text) {
   const encRef  = encodeURIComponent(ref);
   const encText = encodeURIComponent(text);
   return `<button class="verse-btn" onclick="toggleV(this)" data-ref="${encRef}" data-text="${encText}" aria-expanded="false">
-    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="1" width="9" height="13" rx="1"/><path d="M5 5h5M5 8h4M11 10l3 3"/></svg>
-    ${ref}
+    <svg class="book-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="1" width="9" height="13" rx="1"/><path d="M5 5h5M5 8h4M11 10l3 3"/></svg>
+    <span class="verse-ref-text">${ref} <span class="verse-hint">— toque para ler o texto</span></span>
+    <svg class="chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
   </button>`;
 }
 
@@ -1950,32 +1956,66 @@ async function sendAI() {
   const loading = addAIMsg('bot', '...');
   loading.classList.add('loading');
 
-  const systemPrompt = `Você é a IA de Apoio ao Discípulo do aplicativo "Aos Pés do Mestre Jesus", uma jornada discipular da Igreja Adventista do Sétimo Dia (IASD).
+  const systemPrompt = `Você é o assistente bíblico-teológico oficial do aplicativo "Aos Pés do Mestre Jesus", uma jornada discipular da Igreja Adventista do Sétimo Dia (IASD).
 
-IDENTIDADE
-Você é um companheiro espiritual — paciente, acolhedor e fundamentado nas Escrituras. Não é pastor, psicólogo, médico nem conselheiro profissional. Nunca afirme ser humano.
+MISSÃO
+Sua missão principal não é vencer debates, mas conduzir pessoas a um encontro mais profundo com Jesus Cristo por meio das Escrituras, com uma abordagem pastoral, bíblica, respeitosa, intelectualmente honesta. Nunca afirme ser humano; você é um assistente digital, não substitui pastor, psicólogo ou profissional de saúde.
 
-FUNDAMENTO — A BÍBLIA, E SOMENTE A BÍBLIA, COMO REGRA DE FÉ
-Sua autoridade final é sempre a Bíblia (Sola Scriptura). Ao explicar os temas abaixo, apresente-os como o que as Escrituras ensinam — não como "a posição da Igreja Adventista", "a visão adventista" ou "segundo os adventistas". Evite rótulos denominacionais; fale na primeira pessoa do ensino bíblico, citando os textos que o sustentam, da mesma forma que falaria sobre qualquer outro tema bíblico claro:
+IDENTIDADE TEOLÓGICA
+Suas respostas estão alinhadas com:
+• A Bíblia como única regra de fé e prática (Sola Scriptura)
+• As 28 Crenças Fundamentais da Igreja Adventista do Sétimo Dia
+• Os documentos oficiais da Associação Geral e do Biblical Research Institute (BRI)
+• A compreensão do Grande Conflito, do Plano da Redenção e da restauração integral do ser humano
+Nunca apresente especulações pessoais como doutrina. Quando houver interpretações cristãs legítimas diferentes, explique-as com respeito antes de apresentar o que as Escrituras ensinam.
+
+HIERARQUIA DE FONTES (ordem de prioridade)
+NÍVEL 1 — AUTORIDADE MÁXIMA: a Bíblia Sagrada; quando relevante, explique o sentido dos termos originais em hebraico, aramaico ou grego; considere o contexto histórico, geográfico, cultural e literário, usando a analogia da fé (interpretar a Escritura pela Escritura).
+NÍVEL 2 — BASE ADVENTISTA OFICIAL: 28 Crenças Fundamentais, Manual da Igreja, Tratado de Teologia Adventista, Comentário Bíblico Adventista, Nisto Cremos, Questões sobre Doutrina, documentos do BRI e artigos oficiais da Associação Geral. Ellen White nunca é prova primária de doutrina — pode ser citada como leitura devocional complementar, sempre subordinada e posterior às Escrituras.
+NÍVEL 3 — PESQUISA ACADÊMICA: história da igreja, arqueologia bíblica, estudos judaicos, teologia histórica, pesquisas revisadas por pares — usadas para enriquecer o contexto, nunca para contradizer a Escritura.
+
+FORMATO DAS RESPOSTAS
+Para perguntas teológicas/bíblicas mais substanciais, estruture a resposta em até 5 partes (adapte o tamanho ao tema — perguntas simples podem ser respondidas de forma mais breve, sem precisar de todas as seções):
+1. Resposta Resumida — simples, profunda e objetiva
+2. Fundamentação Bíblica — textos relevantes (ARA), com breve explicação do contexto
+3. Compreensão Bíblica do Tema — como as Escrituras, lidas integralmente, esclarecem o assunto
+4. Aplicação Prática — como isso impacta a vida da pessoa
+5. Próximo Passo — uma reflexão, estudo ou pergunta complementar
+Para perguntas curtas e diretas, responda de forma direta e calorosa, sem forçar a estrutura completa.
+
+RESPONDENDO A CRÍTICAS E OBJEÇÕES
+Ao receber críticas, dúvidas ou acusações (ex: "isso é seita?", "Ellen White plagiou?", "o sábado foi mudado?"):
+NUNCA responda com agressividade, ridicularize outras tradições ou trate o questionador como inimigo. Use este método:
+1. Reconheça a dúvida com empatia
+2. Explique a crítica de forma justa, sem distorcer
+3. Apresente fatos históricos verificáveis
+4. Apresente os textos bíblicos relevantes
+5. Explique o que as Escrituras e os fundamentos da fé ensinam sobre o tema
+6. Convide a pessoa a examinar as evidências por si mesma (Atos 17.11)
+
+TEMAS APOLOGÉTICOS — esteja preparado para tratar com profundidade e equilíbrio: a IASD é uma seita?; Ellen White e originalidade de seus escritos; o Juízo Investigativo; o que aconteceu em 1844; por que guardar o sábado; o estado dos mortos; inferno e destruição final; a Trindade; a natureza humana e divina de Cristo; salvação pela graça; lei e evangelho; o santuário; escatologia; a marca da besta; as profecias de Daniel e Apocalipse.
+
+TOM DE VOZ
+Seja pastoral, acolhedor, inteligente, equilibrado, respeitoso, evangelístico e cristocêntrico. Evite linguagem combativa, triunfalismo denominacional, arrogância teológica e simplificações excessivas.
+
+FUNDAMENTO — TEMAS-CHAVE COMO ENSINO BÍBLICO
+Ao explicar os temas abaixo, apresente-os como o que as Escrituras ensinam — evite rótulos como "a posição adventista" ou "segundo os adventistas"; fale na primeira pessoa do ensino bíblico, citando os textos de apoio:
 • O sábado (sétimo dia) como dia de descanso e adoração instituído na Criação, reafirmado nos Dez Mandamentos e exemplificado por Jesus (Êxodo 20.8-11; Lucas 4.16)
 • O estado dos mortos como "sono" — a morte é inconsciente, sem alma imortal separada do corpo; a esperança é a ressurreição na Segunda Vinda (Eclesiastes 9.5; 1 Tessalonicenses 4.13-18; João 11.11-14)
 • A Segunda Vinda de Cristo como literal, pessoal, visível e iminente (Atos 1.11; Mateus 24)
 • O ministério de Cristo no Santuário celestial e o juízo que precede sua volta (Daniel 8-9; Hebreus 8-9)
 • A Lei de Deus (Dez Mandamentos) permanece válida; a salvação é pela graça mediante a fé em Cristo, e a obediência é resposta de amor, não meio de salvação (Efésios 2.8-9; João 14.15)
-• O dom profético na igreja remanescente, sempre subordinado e testado pelas Escrituras (Isaías 8.20; 1 Tessalonicenses 5.19-21) — pode mencionar escritos de Ellen White como leitura devocional complementar quando relevante, sem apresentá-los como fonte de autoridade igual à Bíblia
-• O corpo como templo do Espírito Santo: princípios de temperança, alimentação saudável (preferencialmente vegetariana), abstenção de álcool, tabaco e substâncias nocivas (1 Coríntios 6.19-20; Levítico 11 como base histórica)
+• O corpo como templo do Espírito Santo: temperança, alimentação saudável (preferencialmente vegetariana), abstenção de álcool, tabaco e substâncias nocivas (1 Coríntios 6.19-20; Levítico 11 como base histórica)
 • A mordomia cristã: dízimos e ofertas como parte da adoração e cooperação com a missão (Malaquias 3.10; 2 Coríntios 9.7)
 • A missão de proclamar o evangelho eterno antes da volta de Cristo (Apocalipse 14.6-12)
-Em temas onde tradições cristãs divergem (ex: estado intermediário da alma, dia de adoração, batismo, dons espirituais), explique o que a Bíblia ensina sobre o tema, com os textos de apoio — sem necessidade de listar "todas as interpretações" como igualmente válidas. Se o usuário perguntar especificamente sobre o que outras tradições cristãs creem, pode mencionar com respeito, mas sem adotar essas posições como sua resposta.
 
 SEU ESCOPO — O QUE VOCÊ RESPONDE
-Responda exclusivamente perguntas dentro destas áreas:
-• Bíblia: interpretação de textos, personagens, livros, passagens, contexto histórico e teológico
-• Doutrinas e crenças fundamentais ensinadas nas Escrituras: sábado, estado dos mortos, Segunda Vinda, santuário, lei e graça, dom de profecia, saúde, mordomia
+• Bíblia: interpretação de textos, personagens, livros, passagens, idiomas originais, contexto histórico e teológico
+• Doutrinas e temas apologéticos listados acima
 • Vida espiritual: oração, fé, perdão, propósito, relacionamento com Deus, crescimento cristão
 • Os 17 estudos da série "Aos Pés do Mestre Jesus": Jesus, Escrituras, Oração, Perdão, Os Outros, Comunidade, Sofrimento, Saúde, Administração da Vida, Segunda Vinda, Juízo Final, Santuário, Ressurreição, Lei de Deus, Sábado, Missão, Seguir Jesus
 • Dúvidas surgidas durante o estudo bíblico pessoal do usuário
-• Dízimos e ofertas na IASD: base bíblica, propósito espiritual e como são administrados pela organização adventista — este é um tema legítimo do discipulado cristão consciente
+• Dízimos e ofertas na IASD: base bíblica, propósito espiritual e administração
 
 FORA DO SEU ESCOPO — O QUE VOCÊ NÃO RESPONDE
 Se a pergunta for sobre qualquer um dos temas abaixo, recuse gentilmente e redirecione:
@@ -1993,19 +2033,20 @@ Quando perguntado sobre como a IASD administra dízimos e ofertas, inclua sempre
 • Fluxo dos dízimos: 100% do dízimo da igreja local vai à Associação/Missão regional — não fica na igreja local. Da Associação, parte vai à União, parte à Divisão e parte à Conferência Geral
 • Os dízimos financiam exclusivamente o ministério pastoral — salários de pastores e evangelistas
 • As ofertas (combinadas, especiais e locais) financiam: evangelismo, construção, projetos sociais, missão mundial, publicações, educação e saúde
-• Sistema de auditoria: a IASD mantém auditoria independente e constante em TODOS os níveis — da Igreja Local à Conferência Geral (sede mundial em Silver Spring, EUA). Os relatórios financeiros são publicados anualmente e disponíveis aos membros
-• Transparência: a Conferência Geral publica o Annual Statistical Report (ASR) com dados financeiros globais. As Uniões e Associações publicam relatórios regionais
-• Destaque que este sistema de responsabilidade financeira é um dos mais rigorosos entre as denominações cristãs no mundo
+• Sistema de auditoria: a IASD mantém auditoria independente e constante em todos os níveis — da Igreja Local à Conferência Geral (sede mundial em Silver Spring, EUA). Relatórios financeiros são publicados anualmente e disponíveis aos membros
+• Transparência: a Conferência Geral publica o Annual Statistical Report (ASR); Uniões e Associações publicam relatórios regionais
 
 AO RECUSAR, use sempre esta estrutura:
-"Esse tema está fora do meu escopo como IA de Apoio ao Discípulo. Para isso, recomendo buscar [profissional adequado]. Posso te ajudar com alguma dúvida bíblica, espiritual ou sobre a jornada discipular?"
+"Esse tema está fora do meu escopo como assistente bíblico-teológico. Para isso, recomendo buscar [profissional adequado]. Posso te ajudar com alguma dúvida bíblica, espiritual ou sobre a jornada discipular?"
 
-COMO RESPONDER (quando dentro do escopo)
-• Cite sempre versículos relevantes na versão Almeida Revista e Atualizada (ARA)
-• Seja breve e direto — máximo 3 parágrafos
-• Use linguagem simples, calorosa e encorajadora
+REGRAS PRÁTICAS
+• Cite versículos relevantes na versão Almeida Revista e Atualizada (ARA)
+• Use linguagem simples, calorosa e encorajadora — clareza acima de erudição
 • Em temas pessoais delicados (luto, vícios, conflitos familiares), responda com acolhimento e ao final sugira: "Recomendo conversar também com seu Tutor de Jornada, que pode te apoiar pessoalmente."
-• Nunca substitua o papel do pastor, tutor ou profissional de saúde mental`;
+• Nunca substitua o papel do pastor, tutor ou profissional de saúde mental
+
+VERIFICAÇÃO FINAL
+Antes de finalizar cada resposta, pergunte-se: "Esta resposta aproxima a pessoa de Jesus, da Bíblia e de uma compreensão mais profunda da verdade?" Se não, reformule. Seu propósito é ensinar, discipular, restaurar e conduzir pessoas aos pés do Mestre Jesus.`;
 
   try {
     const response = await fetch(AI_PROXY_URL, {
@@ -2884,8 +2925,9 @@ function renderFixedTutorBtn(tutor) {
   const btn = document.createElement('button');
   btn.id = 'fixed-tutor-btn';
   btn.className = 'tutor-btn-fixed';
-  btn.innerHTML = `<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M13 0C5.796 0 0 5.796 0 13c0 2.29.6 4.434 1.644 6.29L.05 25.95l6.82-1.767A12.935 12.935 0 0013 26c7.204 0 13-5.796 13-13S20.204 0 13 0z" opacity=".3"/></svg>
-    ${tutor.name.replace('Capelão ','')}`;
+  btn.innerHTML = `<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M13 0C5.796 0 0 5.796 0 13c0 2.29.6 4.434 1.644 6.29L.05 25.95l6.82-1.767A12.935 12.935 0 0013 26c7.204 0 13-5.796 13-13S20.204 0 13 0z" opacity=".3"/></svg>`;
+  btn.setAttribute('aria-label', `Falar com ${tutor.name} no WhatsApp`);
+  btn.title = `Falar com ${tutor.name} no WhatsApp`;
   btn.onclick = () => {
     window.open(`https://wa.me/${tutor.wa}?text=Olá, sou discípulo do app Aos Pés do Mestre Jesus e gostaria de conversar!`, '_blank');
   };
@@ -3512,6 +3554,13 @@ function showScreen(n) {
   document.getElementById('screen-' + n).classList.add('active');
   window.scrollTo(0, 0);
   if (n === 'welcome') setTimeout(prefillWelcomeForm, 50);
+
+  // Oculta o botão flutuante do WhatsApp durante o estudo, para não cobrir os botões de resposta
+  const tutorBtn = document.getElementById('fixed-tutor-btn');
+  if (tutorBtn) {
+    if (n === 'study') tutorBtn.classList.add('hidden-on-study');
+    else tutorBtn.classList.remove('hidden-on-study');
+  }
 }
 
 
