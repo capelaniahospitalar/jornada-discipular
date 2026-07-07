@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="theme-color" content="#042C53">
+<meta name="theme-color" content="#004D4D">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Aos Pés do Mestre">
@@ -18,8 +18,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --navy: #0D2137;
-  --navy2: #1A3A56;
+  --navy: #008B8B;
+  --navy2: #0E6B6B;
   --blue: #1E5F8C;
   --blue-mid: #2E7BB5;
   --blue-light: #D6EAF8;
@@ -103,9 +103,9 @@ html,body{font-family:var(--ff-body);background:var(--bg);color:var(--text);min-
 .start-btn svg{width:14px;height:14px;fill:#fff}
 
 .all-done{margin:1rem;text-align:center;background:var(--gold-pale);border:0.5px solid rgba(184,134,11,0.2);border-radius:var(--radius);padding:1.5rem 1rem;font-size:17.5px;color:var(--gold);line-height:1.7;font-family:var(--ff-serif);font-style:italic}
-.bonus-btn{display:flex;align-items:center;justify-content:center;gap:8px;margin:0 1rem;background:linear-gradient(135deg,#042C53,#185FA5);color:#fff;border:none;border-radius:var(--radius-sm);padding:.85rem 1rem;font-size:17.5px;font-weight:500;cursor:pointer;font-family:var(--ff-body);width:calc(100% - 2rem);margin-top:.75rem;letter-spacing:.2px}
+.bonus-btn{display:flex;align-items:center;justify-content:center;gap:8px;margin:0 1rem;background:linear-gradient(135deg,#004D4D,#185FA5);color:#fff;border:none;border-radius:var(--radius-sm);padding:.85rem 1rem;font-size:17.5px;font-weight:500;cursor:pointer;font-family:var(--ff-body);width:calc(100% - 2rem);margin-top:.75rem;letter-spacing:.2px}
 .bonus-section{margin:0 1rem;background:var(--card);border:0.5px solid var(--border);border-radius:var(--radius);overflow:hidden}
-.bonus-section-hdr{background:#042C53;padding:.65rem 1rem;font-size:15px;color:rgba(255,255,255,0.7);letter-spacing:.5px;font-family:var(--ff-body)}
+.bonus-section-hdr{background:#004D4D;padding:.65rem 1rem;font-size:15px;color:rgba(255,255,255,0.7);letter-spacing:.5px;font-family:var(--ff-body)}
 .bonus-section-body{padding:1rem}
 
 /* ── PROGRESS TRACK ── */
@@ -126,7 +126,7 @@ html,body{font-family:var(--ff-body);background:var(--bg);color:var(--text);min-
 .badge-item.unlocked{border-color:rgba(212,160,23,0.45);background:var(--gold-pale);box-shadow:0 2px 6px rgba(212,160,23,0.18)}
 .badge-item.unlocked .badge-ico{font-size:30px;filter:drop-shadow(0 1px 2px rgba(212,160,23,0.4))}
 .badge-item.unlocked .badge-nm{color:var(--gold);font-weight:600}
-.badge-item.current{border-color:var(--navy);background:linear-gradient(135deg,var(--navy),var(--navy2));box-shadow:0 2px 8px rgba(10,35,66,0.35)}
+.badge-item.current{border-color:var(--navy);background:linear-gradient(135deg,var(--navy),var(--navy2));box-shadow:0 2px 8px rgba(0,139,139,0.35)}
 .badge-item.current .badge-ico{font-size:30px;filter:drop-shadow(0 1px 4px rgba(255,255,255,0.3))}
 .badge-item.current .badge-nm{color:#fff;font-weight:700}
 .badge-item.current::after{content:'ATUAL';display:block;font-size:8px;letter-spacing:1px;color:var(--gold-mid);font-weight:700;margin-top:2px;font-family:var(--ff-body)}
@@ -345,7 +345,7 @@ html,body{font-family:var(--ff-body);background:var(--bg);color:var(--text);min-
 
 /* ── WELCOME SCREEN ── */
 .welcome-screen{display:flex;flex-direction:column;min-height:100vh;background:var(--bg)}
-.welcome-hero{background:linear-gradient(180deg,#D6EAF8 0%,#5BA4CF 30%,#1A3A56 65%,#0D2137 100%);padding:1.1rem 1.25rem 1.5rem;position:relative;overflow:hidden}
+.welcome-hero{background:linear-gradient(180deg,#D6EAF8 0%,#5BA4CF 30%,#008B8B 65%,#0E6B6B 100%);padding:1.1rem 1.25rem 1.5rem;position:relative;overflow:hidden}
 .welcome-hero::after{content:'';position:absolute;bottom:-40px;right:-30px;width:160px;height:160px;border:1px solid rgba(255,255,255,0.05);border-radius:50%}
 .welcome-hero::before{content:'';position:absolute;top:-30px;left:-40px;width:130px;height:130px;border:1px solid rgba(255,255,255,0.04);border-radius:50%}
 .welcome-brand{display:flex;flex-direction:row;align-items:center;gap:10px;margin-bottom:.75rem}.welcome-logo{flex-shrink:0;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.25));}.hospital-name-wrap{display:flex;flex-direction:column;gap:1px}.hospital-name-main{font-size:14px;font-weight:700;letter-spacing:.5px;color:#fff;font-family:var(--ff-body);line-height:1.2}.hospital-name-sub{font-size:16px;font-weight:700;letter-spacing:.3px;color:#00C8F0;font-family:var(--ff-body);line-height:1.2;text-shadow:0 0 12px rgba(0,200,240,0.8), 0 1px 4px rgba(0,0,0,0.6)}
@@ -392,10 +392,12 @@ html,body{font-family:var(--ff-body);background:var(--bg);color:var(--text);min-
 .confirm-msg{background:var(--teal-light);border:0.5px solid var(--teal);border-radius:var(--radius-sm);padding:.85rem 1rem;font-size:17px;color:#04342C;font-family:var(--ff-body);line-height:1.5;text-align:center;display:none}
 .confirm-msg.visible{display:block}
 
-.start-journey-btn{background:linear-gradient(135deg,#0D2137,#185FA5);color:#fff;border:none;border-radius:var(--radius);padding:1rem;font-size:20px;font-weight:500;cursor:pointer;width:100%;font-family:var(--ff-body);letter-spacing:.3px;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s;box-shadow:0 4px 15px rgba(13,33,55,0.3)}
-.start-journey-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(13,33,55,0.4)}
+.start-journey-btn{background:linear-gradient(135deg,#008B8B,#185FA5);color:#fff;border:none;border-radius:var(--radius);padding:1rem;font-size:20px;font-weight:500;cursor:pointer;width:100%;font-family:var(--ff-body);letter-spacing:.3px;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s;box-shadow:0 4px 15px rgba(0,139,139,0.3)}
+.start-journey-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,139,139,0.4)}
 .start-journey-btn:disabled{background:#ccc;cursor:default;transform:none;box-shadow:none}
 .start-journey-btn .btn-icon{font-size:25px}
+.install-app-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:var(--card);border:1.5px solid var(--navy);color:var(--navy);border-radius:var(--radius-sm);padding:.75rem;font-size:16px;font-weight:500;cursor:pointer;font-family:var(--ff-body);margin-bottom:.5rem;transition:background .15s}
+.install-app-btn:hover{background:var(--teal-light)}
 </style>
 </head>
 <body>
@@ -425,6 +427,10 @@ html,body{font-family:var(--ff-body);background:var(--bg);color:var(--text);min-
   </div>
 
   <div class="welcome-body">
+
+    <button class="install-app-btn" id="install-app-btn" onclick="handleInstallClick()">
+      <span>📲</span> Criar atalho na tela inicial / área de trabalho
+    </button>
 
     <div class="welcome-msg">
       <p>Você está prestes a iniciar uma aventura que já transformou <strong>milhões de vidas</strong> ao longo da história.</p>
@@ -499,7 +505,7 @@ html,body{font-family:var(--ff-body);background:var(--bg);color:var(--text);min-
           </div>
           <div class="profile-opt" id="popt-amigo" onclick="selectProfile('amigo')" style="display:flex;align-items:center;gap:10px;padding:.65rem .85rem;border-radius:var(--radius-sm);border:1.5px solid var(--border);cursor:pointer;transition:all .15s">
             <span style="font-size:25px">🤝</span>
-            <div><div style="font-size:16px;font-weight:500;color:var(--text)">Amigo dos Adventistas</div><div style="font-size:14px;color:var(--text3)">Tenho interesse em conhecer mais sobre a fé adventista</div></div>
+            <div><div style="font-size:16px;font-weight:500;color:var(--text)">Amigo dos Adventistas</div><div style="font-size:14px;color:var(--text3)">Tenho interesse em conhecer mais sobre a Bíblia Sagrada</div></div>
           </div>
         </div>
       </div>
@@ -630,7 +636,6 @@ html,body{font-family:var(--ff-body);background:var(--bg);color:var(--text);min-
 
   <div id="h-level-card"></div>
   <div id="h-attrs"></div>
-  <div id="h-radar-wrap"></div>
 
   <div id="h-bosses"></div>
   <div id="h-missions"></div>
@@ -2189,7 +2194,7 @@ function renderTutorLoginHint() {
     hint.innerHTML = `Você ainda não tem uma senha cadastrada. Digite a senha que deseja usar e clique em "Criar minha senha".`;
   } else {
     btn.innerHTML = '🔐 Entrar';
-    hint.innerHTML = `<a href="#" onclick="renderTutorResetPass();return false" style="color:var(--text3);text-decoration:underline">Esqueci/quero trocar minha senha</a>`;
+    hint.innerHTML = `<a href="#" onclick="renderTutorResetPass();return false" style="color:var(--text3);text-decoration:underline">Esqueci minha senha</a>`;
   }
 }
 
@@ -2225,15 +2230,19 @@ function renderTutorResetPass() {
   const idx = parseInt(document.getElementById('tp-tutor-select').value, 10);
   const tutor = TUTORS[idx];
   const body = document.getElementById('tutorpanel-body');
+  const isAuthenticated = ST.tutorPanelAuth === tutor.name;
 
   body.innerHTML = `
     <div class="content-card">
       <div class="phase-tag tag-content">${tutor.icon} ${tutor.name}</div>
-      <p class="body-text">Para redefinir sua senha, informe a senha atual e a nova senha desejada. Se você esqueceu a senha atual, peça à coordenação para limpar os dados deste app no navegador (isso remove todas as senhas salvas).</p>
+      <p class="body-text">${isAuthenticated
+        ? 'Para trocar sua senha, informe a senha atual e a nova senha desejada.'
+        : 'Sem problema! Defina abaixo uma nova senha de acesso — não é preciso lembrar a antiga.'}</p>
     </div>
     <div class="panel-section">
+      ${isAuthenticated ? `
       <label style="display:block;font-size:14px;color:var(--text3);margin-bottom:4px">Senha atual</label>
-      <input id="tp-old-pass" type="password" autocomplete="off" style="width:100%;background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:.75rem;font-size:16px;color:var(--text);font-family:var(--ff-body);box-sizing:border-box;margin-bottom:.6rem" placeholder="Senha atual">
+      <input id="tp-old-pass" type="password" autocomplete="off" style="width:100%;background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:.75rem;font-size:16px;color:var(--text);font-family:var(--ff-body);box-sizing:border-box;margin-bottom:.6rem" placeholder="Senha atual">` : ''}
       <label style="display:block;font-size:14px;color:var(--text3);margin-bottom:4px">Nova senha</label>
       <input id="tp-new-pass" type="password" autocomplete="off" style="width:100%;background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:.75rem;font-size:16px;color:var(--text);font-family:var(--ff-body);box-sizing:border-box;margin-bottom:.6rem" placeholder="Nova senha">
       <div id="tp-reset-msg" style="font-size:14px;margin-bottom:.6rem"></div>
@@ -2247,13 +2256,16 @@ function renderTutorResetPass() {
 function tutorResetPass() {
   const idx = parseInt(document.getElementById('tp-tutor-select')?.value ?? '0', 10);
   const tutor = TUTORS[idx];
-  const oldPass = document.getElementById('tp-old-pass').value;
+  const isAuthenticated = ST.tutorPanelAuth === tutor.name;
   const newPass = document.getElementById('tp-new-pass').value;
   const msg = document.getElementById('tp-reset-msg');
 
-  if (oldPass !== getTutorPass(tutor.name)) {
-    msg.innerHTML = '<span style="color:#E05050">Senha atual incorreta.</span>';
-    return;
+  if (isAuthenticated) {
+    const oldPass = document.getElementById('tp-old-pass').value;
+    if (oldPass !== getTutorPass(tutor.name)) {
+      msg.innerHTML = '<span style="color:#E05050">Senha atual incorreta.</span>';
+      return;
+    }
   }
   if (!newPass) {
     msg.innerHTML = '<span style="color:#E05050">Digite a nova senha.</span>';
@@ -3085,67 +3097,6 @@ function renderAttrs() {
     </div>`;
 }
 
-function renderRadar() {
-  const attrs = getAttrs();
-  const vals = ATTRIBUTES.map(a => attrs[a.id] || 0);
-  const labels = ATTRIBUTES.map(a => a.label);
-  const icons  = ATTRIBUTES.map(a => a.icon);
-  const n = 6;
-  const cx = 130, cy = 115, r = 85;
-  const levels = [20,40,60,80,100];
-
-  function pt(i, val) {
-    const angle = (Math.PI * 2 * i / n) - Math.PI / 2;
-    const dist = (val / 100) * r;
-    return [cx + dist * Math.cos(angle), cy + dist * Math.sin(angle)];
-  }
-  function gridPt(i, pct) {
-    const angle = (Math.PI * 2 * i / n) - Math.PI / 2;
-    const dist = (pct / 100) * r;
-    return [cx + dist * Math.cos(angle), cy + dist * Math.sin(angle)];
-  }
-
-  // Grid rings
-  const rings = levels.map(pct => {
-    const pts = Array.from({length:n}, (_,i) => gridPt(i, pct).join(',')).join(' ');
-    return `<polygon points="${pts}" fill="none" stroke="rgba(0,0,0,0.07)" stroke-width="0.5"/>`;
-  }).join('');
-
-  // Axes
-  const axes = Array.from({length:n}, (_,i) => {
-    const [x,y] = gridPt(i, 100);
-    return `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="rgba(0,0,0,0.08)" stroke-width="0.5"/>`;
-  }).join('');
-
-  // Value polygon
-  const polyPts = vals.map((_,i) => pt(i, vals[i]).join(',')).join(' ');
-
-  // Labels
-  const lbls = labels.map((lbl, i) => {
-    const angle = (Math.PI * 2 * i / n) - Math.PI / 2;
-    const dist = r + 20;
-    const x = cx + dist * Math.cos(angle);
-    const y = cy + dist * Math.sin(angle);
-    return `<text x="${x}" y="${y}" text-anchor="middle" dominant-baseline="middle" font-size="9" fill="#6B7A8D" font-family="Source Sans 3,sans-serif">${icons[i]} ${lbl}</text>`;
-  }).join('');
-
-  const svg = `<svg viewBox="0 0 260 230" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px">
-    ${rings}${axes}
-    <polygon points="${polyPts}" fill="rgba(30,95,140,0.15)" stroke="#1E5F8C" stroke-width="1.5"/>
-    ${vals.map((v,i) => {
-      const [x,y] = pt(i,v);
-      return `<circle cx="${x}" cy="${y}" r="3.5" fill="#1E5F8C"/>`;
-    }).join('')}
-    ${lbls}
-  </svg>`;
-
-  document.getElementById('h-radar-wrap').innerHTML = `
-    <div class="radar-wrap">
-      <div class="radar-title">Mapa de Discipulado</div>
-      ${svg}
-    </div>`;
-}
-
 function renderShareArea() {
   document.getElementById('h-share-area').innerHTML = `
     <div style="margin:.75rem 1rem 0;display:grid;grid-template-columns:1fr 1fr;gap:8px">
@@ -3617,7 +3568,6 @@ function renderHome() {
   // Phase 1 — RPG elements
   renderLevelCard();
   renderAttrs();
-  renderRadar();
   // Phase 2 — Bosses, Missions, Journal
   renderBosses();
   renderMissions();
@@ -4063,6 +4013,41 @@ if ('serviceWorker' in navigator) {
       .then(reg => console.log('SW ok'))
       .catch(err => console.log('SW erro:', err));
   });
+}
+
+// Atalho / instalação do app na tela inicial (Android/desktop) ou área de trabalho
+let deferredInstallPrompt = null;
+const installBtn = document.getElementById('install-app-btn');
+
+function isAppInstalled() {
+  return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+}
+
+if (installBtn && isAppInstalled()) {
+  installBtn.style.display = 'none';
+}
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredInstallPrompt = e;
+});
+
+window.addEventListener('appinstalled', () => {
+  deferredInstallPrompt = null;
+  if (installBtn) installBtn.style.display = 'none';
+});
+
+function handleInstallClick() {
+  if (deferredInstallPrompt) {
+    deferredInstallPrompt.prompt();
+    deferredInstallPrompt.userChoice.then(() => { deferredInstallPrompt = null; });
+    return;
+  }
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  const msg = isIOS
+    ? 'Para adicionar à tela inicial no iPhone/iPad:\n\n1. Toque no ícone de Compartilhar (□↑) na barra do Safari\n2. Escolha "Adicionar à Tela de Início"'
+    : 'Para criar o atalho:\n\n1. Abra o menu do navegador (⋮ ou •••)\n2. Escolha "Instalar app" ou "Adicionar à tela inicial / área de trabalho"';
+  alert(msg);
 }
 </script>
 </body>
