@@ -486,6 +486,20 @@ html,body{font-family:var(--ff-body);background:var(--bg);color:var(--text);min-
           onblur="this.style.borderColor='var(--border)'">
       </div>
 
+      <!-- WhatsApp -->
+      <div style="background:var(--card);border:0.5px solid var(--border);border-radius:var(--radius);padding:.9rem 1rem">
+        <label style="font-size:14px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--text3);display:block;margin-bottom:.5rem">Seu WhatsApp</label>
+        <div style="display:flex;align-items:center;gap:6px">
+          <span style="font-size:17.5px;color:var(--text3);white-space:nowrap">+55</span>
+          <input id="user-wa-input" type="tel" placeholder="DDD + número (somente dígitos)"
+            style="flex:1;min-width:0;border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:.6rem .75rem;font-size:17.5px;font-family:var(--ff-body);background:var(--bg);color:var(--text);outline:none;box-sizing:border-box"
+            oninput="ST.userWa=this.value.replace(/\D/g,'');debouncedSave()"
+            onfocus="this.style.borderColor='var(--blue-mid)'"
+            onblur="this.style.borderColor='var(--border)'">
+        </div>
+        <p style="font-size:12.5px;color:var(--text3);margin:.4rem 0 0">Seu tutor receberá seu contato para acompanhar sua jornada.</p>
+      </div>
+
       <!-- Perfil -->
       <div style="background:var(--card);border:0.5px solid var(--border);border-radius:var(--radius);padding:.9rem 1rem">
         <label style="font-size:14px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--text3);display:block;margin-bottom:.6rem">Como você se identifica?</label>
@@ -592,11 +606,8 @@ html,body{font-family:var(--ff-body);background:var(--bg);color:var(--text);min-
     <div class="scard"><div class="scard-v" id="h-streak">0🔥</div><div class="scard-l">Sequência</div></div>
   </div>
 
-  <div class="streak">
-    <div class="streak-ico">🕊️</div>
-    <div class="streak-txt" id="h-streak-msg">Comece sua caminhada com Jesus hoje!</div>
-    <div class="streak-num" id="h-streak-num">0</div>
-  </div>
+  <div class="sec-label">Conquistas</div>
+  <div class="badges-scroll" id="h-badges"></div>
 
   <div class="progress-section">
     <div class="progress-lbl">Progresso na trilha</div>
@@ -604,25 +615,41 @@ html,body{font-family:var(--ff-body);background:var(--bg);color:var(--text);min-
     <div class="track-pct" id="h-pct">0% concluído — 16 estudos pela frente</div>
   </div>
 
-  <div class="sec-label">Conquistas</div>
-  <div class="badges-scroll" id="h-badges"></div>
+  <div style="margin:.75rem 1rem 0">
+    <button onclick="openPanel()" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:var(--blue);border:none;border-radius:var(--radius-sm);padding:.8rem;font-size:17px;font-weight:500;color:#fff;cursor:pointer;font-family:var(--ff-body)">
+      📊 Painel do Discípulo
+    </button>
+  </div>
 
-  <div class="sec-label" id="lbl-previous" style="display:none">Estudos anteriores</div>
-  <div id="h-previous"></div>
-
-  <div id="h-level-card"></div>
-  <div id="h-attrs"></div>
-
-  <div id="h-bosses"></div>
-  <div id="h-missions"></div>
+  <div style="margin:.5rem 1rem 0">
+    <button onclick="openDesafios()" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:var(--blue);border:none;border-radius:var(--radius-sm);padding:.8rem;font-size:17px;font-weight:500;color:#fff;cursor:pointer;font-family:var(--ff-body)">
+      ⚔️ Desafios do Discipulado
+    </button>
+  </div>
 
   <div class="next-area" id="next-area"></div>
 
-  <div id="h-journal-btn"></div>
-  <div id="h-share-area"></div>
+  <div id="h-tutorpanel-btn"></div>
   <div id="h-ai-area"></div>
   <div id="h-tutor-area"></div>
 
+</div>
+
+<!-- DESAFIOS DO DISCIPULADO -->
+<div id="screen-desafios" class="screen">
+  <div class="study-hdr">
+    <button class="back-btn" onclick="goHome()" aria-label="Voltar">&#8592;</button>
+    <div class="sh-info">
+      <div class="sh-step" style="color:rgba(255,255,255,0.55)">Sua caminhada</div>
+      <div class="sh-title">Desafios do Discipulado</div>
+    </div>
+  </div>
+  <div class="tutor-screen">
+    <div id="h-bosses"></div>
+    <div id="h-missions"></div>
+    <div id="h-share-area"></div>
+    <div id="h-journal-btn"></div>
+  </div>
 </div>
 
 <!-- STUDY -->
@@ -741,7 +768,7 @@ html,body{font-family:var(--ff-body);background:var(--bg);color:var(--text);min-
     <div class="journal-tab-row" style="padding:0;gap:6px;display:flex;align-items:center">
       <button class="journal-tab active" id="jtab-entries" onclick="switchJTab('entries')">Registros</button>
       <button class="journal-tab" id="jtab-new" onclick="switchJTab('new')">+ Novo</button>
-      <button onclick="exportJournalText()" title="Exportar diário" style="margin-left:auto;background:transparent;border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:.35rem .7rem;font-size:13px;color:var(--text3);cursor:pointer;font-family:var(--ff-body)">⬇ Exportar</button>
+      <button onclick="exportJournalMenu()" title="Exportar diário" style="margin-left:auto;background:transparent;border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:.35rem .7rem;font-size:13px;color:var(--text3);cursor:pointer;font-family:var(--ff-body)">⬇ Exportar</button>
     </div>
   </div>
   <div class="journal-screen" id="journal-body"></div>
@@ -2553,7 +2580,7 @@ function renderDiscipuloDetalhe(idx) {
     </div>
 
     <div class="panel-section">
-      <div class="panel-title">🏛️ Atributos Espirituais</div>
+      <div class="panel-title">🏛️ Crescimento Cristão</div>
       ${attrsHtml}
     </div>
 
@@ -2579,9 +2606,6 @@ function openPanel() {
   const attrs = getAttrs();
   const lv = getRpgLevel();
   const tutor = ST.tutor !== undefined ? TUTORS[ST.tutor] : null;
-  const attrRows = ATTRIBUTES.map(a =>
-    `<div class="panel-stat"><span>${a.icon} ${a.label}</span><strong>${attrs[a.id]||0}/100</strong></div>`
-  ).join('');
   const bossRows = OBSTACLES.filter(o => getObstacleProgress(o)>=100)
     .map(o => `<div class="panel-stat"><span>${o.icon} ${o.label}</span><strong style="color:var(--teal)">✓ Vencido</strong></div>`)
     .join('') || '<div style="font-size:16px;color:var(--text3);padding:.4rem 0">Nenhum ainda</div>';
@@ -2611,9 +2635,11 @@ function openPanel() {
       <div class="panel-stat"><span>📔 Registros no diário</span><strong>${(ST.journal||[]).length}</strong></div>
     </div>
     <div class="panel-section">
-      <div class="panel-title">Atributos espirituais</div>
-      ${attrRows}
+      <div id="panel-previous-label"></div>
+      <div id="panel-previous"></div>
     </div>
+    <div id="panel-level-card"></div>
+    <div id="panel-attrs"></div>
     <div class="panel-section">
       <div class="panel-title">Obstáculos vencidos</div>
       ${bossRows}
@@ -2623,7 +2649,15 @@ function openPanel() {
       <svg viewBox="0 0 24 24" fill="white" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
       Enviar progresso para ${tutor.name}
     </button>` : `<div style="font-size:16px;color:var(--text3);text-align:center;padding:.5rem">Escolha um tutor para compartilhar seu progresso.</div>`}
-    <button class="nav-btn" onclick="goHome()" style="background:transparent;color:var(--blue);border:0.5px solid var(--blue)">Voltar ao início</button>`;
+    <div style="margin:.75rem 1rem 0;text-align:center">
+      <p style="font-size:13px;color:var(--text3);margin:0 0 .3rem">Caso queira repetir o ciclo completo, clique:</p>
+      <button onclick="confirmRestart()" style="background:transparent;border:none;padding:.4rem .5rem;font-size:14px;color:var(--text3);cursor:pointer;font-family:var(--ff-body);text-decoration:underline;text-underline-offset:3px">
+        🔄 Recomeçar a partir do estudo 1
+      </button>
+    </div>`;
+  renderPreviousStudies();
+  renderLevelCard();
+  renderAttrs();
 }
 
 // ══════════════════════════════════════
@@ -2946,12 +2980,8 @@ function downloadFile(filename, content, type) {
   URL.revokeObjectURL(url);
 }
 
-function exportJournalText() {
+function buildJournalText() {
   const entries = ST.journal || [];
-  if (!entries.length) {
-    showModal({ title: 'Diário vazio', message: 'Nenhuma entrada no diário ainda.', actions: [{ label: 'OK', onclick: 'closeModal()', primary: true }] });
-    return;
-  }
   const lines = entries.map((e, i) => [
     `--- Entrada ${i + 1} — ${formatJournalDate(e.date)} ---`,
     `Estudo: ${e.study || ''}`,
@@ -2961,9 +2991,41 @@ function exportJournalText() {
     e.prayer   ? `Minha oração: ${e.prayer}`                : '',
     e.decision ? `Minha decisão: ${e.decision}`             : ''
   ].filter(Boolean).join('\n')).join('\n\n');
+  return `Diário Espiritual — ${ST.userName || 'Discípulo'}\n\n${lines}`;
+}
+
+function exportJournalMenu() {
+  if (!(ST.journal || []).length) {
+    showModal({ title: 'Diário vazio', message: 'Nenhuma entrada no diário ainda.', actions: [{ label: 'OK', onclick: 'closeModal()', primary: true }] });
+    return;
+  }
+  showModal({
+    title: 'Exportar diário',
+    message: 'Como você quer exportar seu diário espiritual?',
+    actions: [
+      { label: '💬 WhatsApp',   onclick: 'closeModal();shareJournalWhatsApp()', primary: false },
+      { label: '⬇ Arquivo',    onclick: 'closeModal();exportJournalText()',    primary: true  }
+    ]
+  });
+}
+
+async function shareJournalWhatsApp() {
+  const text = buildJournalText();
+  if (navigator.share) {
+    try { await navigator.share({ title: 'Diário Espiritual', text }); return; } catch {}
+  }
+  window.open('https://wa.me/?text=' + encodeURIComponent(text.slice(0, 4000)), '_blank');
+}
+
+function exportJournalText() {
+  const entries = ST.journal || [];
+  if (!entries.length) {
+    showModal({ title: 'Diário vazio', message: 'Nenhuma entrada no diário ainda.', actions: [{ label: 'OK', onclick: 'closeModal()', primary: true }] });
+    return;
+  }
   downloadFile(
     'diario-espiritual-' + new Date().toISOString().slice(0,10) + '.txt',
-    `Diário Espiritual — ${ST.userName || 'Discípulo'}\n\n${lines}`,
+    buildJournalText(),
     'text/plain;charset=utf-8'
   );
 }
@@ -3148,6 +3210,10 @@ function getCurrentLevelIdx() {
   return idx;
 }
 
+function updateLevelBadge() {
+  document.getElementById('h-level').textContent = RPG_LEVELS[getCurrentLevelIdx()].name;
+}
+
 function renderLevelCard() {
   // Cada fase é desbloqueada quando todos os estudos dela estão concluídos
   const currentIdx = getCurrentLevelIdx();
@@ -3189,12 +3255,11 @@ function renderLevelCard() {
     </div>`;
   }).join('');
 
-  document.getElementById('h-level-card').innerHTML = `
-    <div style="margin:.75rem 1rem 0;background:var(--card);border:0.5px solid var(--border);border-radius:var(--radius);padding:1rem">
-      <div style="font-size:12.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);margin-bottom:.65rem;font-family:var(--ff-body)">Jornada de Conquistas</div>
+  document.getElementById('panel-level-card').innerHTML = `
+    <div class="panel-section">
+      <div class="panel-title">Jornada de Conquistas</div>
       ${rows}
     </div>`;
-  document.getElementById('h-level').textContent = RPG_LEVELS[currentIdx].name;
 }
 
 function renderAttrs() {
@@ -3208,11 +3273,36 @@ function renderAttrs() {
       <div class="attr-val">${val}</div>
     </div>`;
   }).join('');
-  document.getElementById('h-attrs').innerHTML = `
-    <div class="attr-section" style="margin-top:.75rem">
-      <div class="attr-title">Atributos Espirituais</div>
+  document.getElementById('panel-attrs').innerHTML = `
+    <div class="attr-section">
+      <div class="attr-title">Crescimento Cristão</div>
       ${rows}
     </div>`;
+}
+
+function renderPreviousStudies() {
+  const prevLabel = document.getElementById('panel-previous-label');
+  const prevList = document.getElementById('panel-previous');
+  if (ST.done.length > 0) {
+    prevLabel.innerHTML = `
+      <button onclick="toggleSection(this)" style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text2);font-size:15px;font-weight:600;font-family:var(--ff-body);cursor:pointer;display:flex;align-items:center;gap:6px;padding:.6rem .75rem;width:100%;text-align:left">
+        <span class="toggle-arrow" style="display:inline-block;transition:transform .2s">▸</span>
+        ${ST.done.length} estudo(s) realizado(s) — toque para ver
+      </button>`;
+    const itemsHtml = ST.done.slice().reverse().map(i => `
+      <div class="prev-item" onclick="openStudy(${i})">
+        <div class="prev-num">✓</div>
+        <div class="prev-info">
+          <div class="prev-title">${STUDIES[i].title}</div>
+          <div class="prev-sub">Estudo ${i+1} · Toque para rever</div>
+        </div>
+        <div class="prev-arrow">›</div>
+      </div>`).join('');
+    prevList.innerHTML = `<div class="toggle-content" style="display:none">${itemsHtml}</div>`;
+  } else {
+    prevLabel.innerHTML = '<div style="font-size:15px;color:var(--text3)">Nenhum estudo realizado ainda.</div>';
+    prevList.innerHTML = '';
+  }
 }
 
 function renderShareArea() {
@@ -3224,12 +3314,17 @@ function renderShareArea() {
       <button onclick="openPanel()" style="background:var(--card);border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:.75rem .5rem;font-size:16px;color:var(--text);cursor:pointer;font-family:var(--ff-body);display:flex;flex-direction:column;align-items:center;gap:4px">
         <span style="font-size:25px">📈</span>Meu progresso
       </button>
-    </div>
+    </div>`;
+  document.getElementById('h-tutorpanel-btn').innerHTML = `
     <div style="margin:.5rem 1rem 0">
       <button onclick="openTutorPanel()" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:var(--card);border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:.7rem;font-size:16px;color:var(--text2);cursor:pointer;font-family:var(--ff-body)">
         🧑‍🏫 Painel do Tutor <span style="font-size:14px;color:var(--text3)">(área dos capelães)</span>
       </button>
     </div>`;
+}
+
+function openDesafios() {
+  showScreen('desafios');
 }
 
 function renderAIArea() {
@@ -3264,17 +3359,6 @@ function renderTutorArea() {
         </button>
       </div>`;
     removeFixedTutorBtn();
-  }
-
-  // Botão de recomeço — sempre visível na home
-  const restartArea = document.getElementById('h-tutor-area');
-  if (restartArea) {
-    restartArea.innerHTML += `
-      <div style="margin:.75rem 1rem 0;text-align:center">
-        <button onclick="confirmRestart()" style="background:transparent;border:none;padding:.4rem .5rem;font-size:14px;color:var(--text3);cursor:pointer;font-family:var(--ff-body);text-decoration:underline;text-underline-offset:3px">
-          🔄 Recomeçar a partir do estudo 1
-        </button>
-      </div>`;
   }
 }
 
@@ -3405,6 +3489,7 @@ function syncToTutorBackend() {
     const obstaculosVencidos = OBSTACLES.filter(o => getObstacleProgress(o) >= 100).map(o => o.label);
     const payload = {
       nome: ST.userName.trim(),
+      whatsapp: ST.userWa || '',
       tutor: tutorName,
       estudos: (ST.done || []).length,
       estudosConcluidos: estudosConcluidos,
@@ -3529,9 +3614,6 @@ function renderHome() {
   document.getElementById('h-xp').textContent = ST.xp;
   document.getElementById('h-done').textContent = ST.done.length + '/' + STUDIES.length;
   document.getElementById('h-streak').textContent = ST.streak + '🔥';
-  document.getElementById('h-streak-num').textContent = ST.streak;
-  document.getElementById('h-streak-msg').textContent =
-    ST.streak > 1 ? ST.streak + ' dias consecutivos de caminhada!' : 'Comece sua caminhada com Jesus hoje!';
 
   const tp = Math.round(ST.done.length / STUDIES.length * 100);
   document.getElementById('h-track').style.width = tp + '%';
@@ -3568,31 +3650,6 @@ function renderHome() {
     }
   });
 
-  // Previous studies — revisit anytime (colapsável)
-  const prevList = document.getElementById('h-previous');
-  const prevLabel = document.getElementById('lbl-previous');
-  if (ST.done.length > 0) {
-    prevLabel.style.display = '';
-    prevLabel.innerHTML = `
-      <button onclick="toggleSection(this)" style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text2);font-size:15px;font-weight:600;font-family:var(--ff-body);cursor:pointer;display:flex;align-items:center;gap:6px;padding:.6rem .75rem;width:100%;text-align:left">
-        <span class="toggle-arrow" style="display:inline-block;transition:transform .2s">▸</span>
-        ${ST.done.length} estudo(s) realizado(s) — toque para ver
-      </button>`;
-    const itemsHtml = ST.done.slice().reverse().map(i => `
-      <div class="prev-item" onclick="openStudy(${i})">
-        <div class="prev-num">✓</div>
-        <div class="prev-info">
-          <div class="prev-title">${STUDIES[i].title}</div>
-          <div class="prev-sub">Estudo ${i+1} · Toque para rever</div>
-        </div>
-        <div class="prev-arrow">›</div>
-      </div>`).join('');
-    prevList.innerHTML = `<div class="toggle-content" style="display:none">${itemsHtml}</div>`;
-  } else {
-    prevLabel.style.display = 'none';
-    prevLabel.innerHTML = '';
-    prevList.innerHTML = '';
-  }
 
   const ni = ST.done.length;
   const area = document.getElementById('next-area');
@@ -3643,8 +3700,7 @@ function renderHome() {
   }
 
   // Phase 1 — RPG elements
-  renderLevelCard();
-  renderAttrs();
+  updateLevelBadge();
   // Phase 2 — Bosses, Missions, Journal
   renderBosses();
   renderMissions();
@@ -4016,12 +4072,25 @@ function selectWelcomeTutor(idx) {
 }
 
 function startJourney() {
+  if (!ST.userName || !ST.userName.trim()) { showModal({ title: 'Digite seu nome', message: 'Informe seu nome antes de iniciar a jornada.', actions: [{ label: 'OK', onclick: 'closeModal()', primary: true }] }); return; }
+  if (!ST.userWa || ST.userWa.length < 10) { showModal({ title: 'WhatsApp inválido', message: 'Informe um número de WhatsApp válido (com DDD) antes de iniciar a jornada.', actions: [{ label: 'OK', onclick: 'closeModal()', primary: true }] }); return; }
   if (ST.tutor === undefined) { showModal({ title: 'Escolha um tutor', message: 'Selecione um tutor antes de iniciar a jornada.', actions: [{ label: 'OK', onclick: 'closeModal()', primary: true }] }); return; }
   ST.welcomeDone = true;
   save(ST);
   showScreen('home');
   renderHome();
   renderFixedTutorBtn(TUTORS[ST.tutor]);
+  notifyTutorOfNewDisciple();
+}
+
+function notifyTutorOfNewDisciple() {
+  const tutor = TUTORS[ST.tutor];
+  if (!tutor || !tutor.wa) return;
+  const nome = ST.userName.trim();
+  const msg = encodeURIComponent(
+    `Olá, ${tutor.name}! Sou ${nome} e acabei de começar a Jornada Discipular Aos Pés do Mestre Jesus. Você foi o tutor que escolhi para me acompanhar! 🙏\n\nMeu WhatsApp: +55 ${ST.userWa}`
+  );
+  window.open(`https://wa.me/${tutor.wa}?text=${msg}`, '_blank');
 }
 
 // Restore welcome state: if already done, go straight to home
