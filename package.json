@@ -1,0 +1,13 @@
+{
+  "name": "jornada-discipular",
+  "version": "1.1.0",
+  "description": "Aos Pés do Mestre Jesus — Jornada Discipular · Hospital Adventista Silvestre",
+  "private": true,
+  "scripts": {
+    "build": "npx html-minifier-terser index.html --collapse-whitespace --remove-comments --remove-redundant-attributes --minify-css true --minify-js true -o dist/index.html",
+    "build:copy": "cp manifest.json service-worker.js icon-192.png icon-512.png dist/"
+  },
+  "devDependencies": {
+    "html-minifier-terser": "^7.2.0"
+  }
+}

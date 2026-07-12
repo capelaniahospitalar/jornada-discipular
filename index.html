@@ -9,12 +9,15 @@
 <meta name="apple-mobile-web-app-title" content="Aos Pés do Mestre">
 <meta name="description" content="Jornada Discipular — Hospital Adventista Silvestre">
 <link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" sizes="180x180" href="https://capelaniahospitalar.github.io/jornada-discipular/icon-192.png">
-<link rel="apple-touch-icon" sizes="152x152" href="https://capelaniahospitalar.github.io/jornada-discipular/icon-192.png">
-<link rel="apple-touch-icon" sizes="120x120" href="https://capelaniahospitalar.github.io/jornada-discipular/icon-192.png">
-<link rel="icon" type="image/png" sizes="192x192" href="https://capelaniahospitalar.github.io/jornada-discipular/icon-192.png">
-<link rel="icon" type="image/png" sizes="512x512" href="https://capelaniahospitalar.github.io/jornada-discipular/icon-512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./icon-192.png">
+<link rel="apple-touch-icon" sizes="152x152" href="./icon-192.png">
+<link rel="apple-touch-icon" sizes="120x120" href="./icon-192.png">
+<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png">
 <title>Aos Pés do Mestre Jesus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://solitary-meadow-26e0.prwladi.workers.dev">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -253,7 +256,7 @@ html,body{font-family:var(--ff-body);background:var(--bg);color:var(--text);min-
 .tutor-wa{display:flex;align-items:center;gap:5px;background:#25D366;color:#fff;border:none;border-radius:var(--radius-sm);padding:.75rem 1rem;font-size:17.5px;font-weight:500;cursor:pointer;width:100%;justify-content:center;font-family:var(--ff-body);transition:background .15s}
 .tutor-wa:hover{background:#1da851}
 .tutor-wa svg{width:18px;height:18px;fill:#fff;flex-shrink:0}
-.tutor-btn-fixed{position:fixed;bottom:.85rem;left:.85rem;background:#25D366;color:#fff;border:none;border-radius:24px;height:46px;padding:0 14px 0 12px;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:7px;box-shadow:0 3px 12px rgba(0,0,0,0.25);z-index:100;font-family:var(--ff-body);transition:all .15s;max-width:calc(100vw - 1.7rem);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tutor-btn-fixed{position:fixed;bottom:.85rem;right:.85rem;background:#25D366;color:#fff;border:none;border-radius:24px;height:46px;padding:0 14px 0 12px;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:7px;box-shadow:0 3px 12px rgba(0,0,0,0.25);z-index:100;font-family:var(--ff-body);transition:all .15s;max-width:calc(100vw - 1.7rem);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .tutor-btn-fixed:hover{background:#1da851;transform:scale(1.03)}
 .tutor-btn-fixed svg{width:22px;height:22px;fill:#fff;flex-shrink:0}
 .tutor-btn-fixed .tbf-name{overflow:hidden;text-overflow:ellipsis}
@@ -308,7 +311,7 @@ html,body{font-family:var(--ff-body);background:var(--bg);color:var(--text);min-
 .journal-empty{text-align:center;padding:2rem 1rem;color:var(--text3);font-size:17.5px;font-family:var(--ff-serif);font-style:italic}
 
 /* ── PHASE 3: AI ASSISTANT, SHARE, TUTOR PANEL ── */
-.ai-screen{padding:0;display:flex;flex-direction:column;height:calc(100vh - 56px)}
+.ai-screen{padding:0;display:flex;flex-direction:column;height:calc(100vh - 56px);height:calc(100dvh - 56px)}
 .ai-messages{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.75rem}
 .ai-msg{max-width:88%;padding:.75rem .9rem;border-radius:12px;font-size:20px;line-height:1.6;font-family:var(--ff-body)}
 .ai-msg.user{background:var(--navy);color:#fff;align-self:flex-end;border-bottom-right-radius:3px}
@@ -380,14 +383,6 @@ html,body{font-family:var(--ff-body);background:var(--bg);color:var(--text);min-
 .wtc-role{font-size:14px;color:var(--text3);margin-top:2px;font-family:var(--ff-body)}
 .wtc-check{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;font-size:15px}
 .welcome-tutor-card.selected .wtc-check{background:var(--teal);border-color:var(--teal);color:#fff}
-
-.guest-tutor-card{background:var(--card);border:1.5px dashed var(--border);border-radius:var(--radius);padding:1rem;display:flex;flex-direction:column;gap:.65rem}
-.guest-tutor-card.selected{border-color:var(--teal);border-style:solid;background:var(--teal-light)}
-.guest-header{display:flex;align-items:center;gap:10px}
-.guest-fields{display:flex;flex-direction:column;gap:6px}
-.guest-input{width:100%;border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:.6rem .85rem;font-size:20px;font-family:var(--ff-body);outline:none;background:var(--bg);color:var(--text);transition:border .15s}
-.guest-input:focus{border-color:var(--blue-mid)}
-.guest-confirm-btn{background:var(--teal);color:#fff;border:none;border-radius:var(--radius-sm);padding:.6rem;font-size:16px;cursor:pointer;font-family:var(--ff-body);width:100%}
 
 .confirm-msg{background:var(--teal-light);border:0.5px solid var(--teal);border-radius:var(--radius-sm);padding:.85rem 1rem;font-size:17px;color:#04342C;font-family:var(--ff-body);line-height:1.5;text-align:center;display:none}
 .confirm-msg.visible{display:block}
@@ -486,7 +481,7 @@ html,body{font-family:var(--ff-body);background:var(--bg);color:var(--text);min-
         <label style="font-size:14px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--text3);display:block;margin-bottom:.5rem">Seu nome</label>
         <input id="user-name-input" type="text" placeholder="Como podemos te chamar?"
           style="width:100%;border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:.6rem .75rem;font-size:17.5px;font-family:var(--ff-body);background:var(--bg);color:var(--text);outline:none;box-sizing:border-box"
-          oninput="ST.userName=this.value.trim();save(ST)"
+          oninput="ST.userName=this.value.trim();debouncedSave()"
           onfocus="this.style.borderColor='var(--blue-mid)'"
           onblur="this.style.borderColor='var(--border)'">
       </div>
@@ -552,25 +547,6 @@ html,body{font-family:var(--ff-body);background:var(--bg);color:var(--text);min-
           <div class="wtc-role">Acompanhamento espiritual e discipulado cristão</div>
         </div>
         <div class="wtc-check" id="wtc-check-3"></div>
-      </div>
-
-      <div class="guest-tutor-card" id="wtc-guest">
-        <div class="guest-header">
-          <div class="wtc-avatar" style="background:var(--navy2)">🤝</div>
-          <div class="wtc-info">
-            <div class="wtc-name">Tutor Convidado</div>
-            <div class="wtc-role">Coloque o nome de seu amigo adventista</div>
-          </div>
-          <div class="wtc-check" id="wtc-check-guest"></div>
-        </div>
-        <div class="guest-fields" id="guest-fields-welcome" style="display:none">
-          <input id="gw-name" class="guest-input" type="text" placeholder="Nome do tutor convidado">
-          <div style="display:flex;align-items:center;gap:6px">
-            <span style="font-size:16px;color:var(--text3);white-space:nowrap">+55</span>
-            <input id="gw-wa" class="guest-input" type="tel" placeholder="WhatsApp (somente números)" style="flex:1">
-          </div>
-          <button class="guest-confirm-btn" onclick="confirmGuestWelcome()">✓ Confirmar tutor convidado</button>
-        </div>
       </div>
 
     </div>
@@ -762,9 +738,10 @@ html,body{font-family:var(--ff-body);background:var(--bg);color:var(--text);min-
     </div>
   </div>
   <div style="padding:.75rem 1rem 0">
-    <div class="journal-tab-row" style="padding:0;gap:6px;display:flex">
+    <div class="journal-tab-row" style="padding:0;gap:6px;display:flex;align-items:center">
       <button class="journal-tab active" id="jtab-entries" onclick="switchJTab('entries')">Registros</button>
       <button class="journal-tab" id="jtab-new" onclick="switchJTab('new')">+ Novo</button>
+      <button onclick="exportJournalText()" title="Exportar diário" style="margin-left:auto;background:transparent;border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:.35rem .7rem;font-size:13px;color:var(--text3);cursor:pointer;font-family:var(--ff-body)">⬇ Exportar</button>
     </div>
   </div>
   <div class="journal-screen" id="journal-body"></div>
@@ -841,10 +818,10 @@ function V(ref, text) {
   </button>`;
 }
 
-// Retorna o primeiro nome do usuário para personalizar os textos
+// Retorna o primeiro nome do usuário para personalizar os textos (escapado para innerHTML)
 function N() {
   if (ST.userName && ST.userName.trim()) {
-    return `<strong style="color:var(--navy2)">${ST.userName.trim().split(' ')[0]}</strong>`;
+    return `<strong style="color:var(--navy2)">${escapeHTML(ST.userName.trim().split(' ')[0])}</strong>`;
   }
   return '<strong style="color:var(--navy2)">amigo</strong>';
 }
@@ -870,6 +847,87 @@ function toggleV(btn) {
   d.innerHTML = `<span class="vref">${ref}</span>${text}`;
   btn.insertAdjacentElement('afterend', d);
   btn.setAttribute('aria-expanded','true');
+}
+
+// ── F0.1 XSS: escape HTML para dados de usuário ──────────────────────────────
+function escapeHTML(str) {
+  return String(str == null ? '' : str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+// ── F1.2 Debounce: evita save() em cada keystroke ────────────────────────────
+let _saveTimer = null;
+function debouncedSave() {
+  if (_saveTimer) clearTimeout(_saveTimer);
+  _saveTimer = setTimeout(() => { save(ST); _saveTimer = null; }, 400);
+}
+
+// ── F4.3 Modal estilizado (substitui alert/confirm) ──────────────────────────
+function showModal({ title, message, actions }) {
+  document.getElementById('app-modal')?.remove();
+  const overlay = document.createElement('div');
+  overlay.id = 'app-modal';
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:9999';
+  const btns = (actions || []).map(a =>
+    `<button onclick="${escapeHTML(a.onclick)}"
+      style="padding:.6rem 1.2rem;border-radius:var(--radius-sm);border:1px solid ${a.primary?'transparent':'var(--border)'};
+             cursor:pointer;font-size:15px;font-family:var(--ff-body);
+             background:${a.primary?'var(--blue)':'transparent'};
+             color:${a.primary?'#fff':'var(--text3)'}">
+      ${escapeHTML(a.label)}</button>`
+  ).join('');
+  overlay.innerHTML = `
+    <div style="background:var(--card);border-radius:var(--radius);padding:1.5rem;max-width:320px;width:90%;margin:1rem">
+      <p style="font-weight:600;font-size:17px;color:var(--text);margin-bottom:.75rem">${escapeHTML(title)}</p>
+      <p style="color:var(--text2);font-size:15px;line-height:1.6">${escapeHTML(message)}</p>
+      <div style="display:flex;gap:.75rem;margin-top:1.25rem;justify-content:flex-end">${btns}</div>
+    </div>`;
+  document.body.appendChild(overlay);
+}
+function closeModal() { document.getElementById('app-modal')?.remove(); }
+
+// ── F1.4 Toast de aviso de armazenamento ──────────────────────────────────────
+function showStorageWarning() {
+  if (document.getElementById('storage-toast')) return;
+  const t = document.createElement('div');
+  t.id = 'storage-toast';
+  t.style.cssText = 'position:fixed;bottom:70px;left:50%;transform:translateX(-50%);background:#c0392b;color:#fff;border-radius:8px;padding:.75rem 1.1rem;font-size:14px;font-family:var(--ff-body);z-index:9998;max-width:90vw;text-align:center;box-shadow:0 3px 12px rgba(0,0,0,.3)';
+  t.textContent = '⚠️ Armazenamento cheio. Exporte seu diário para liberar espaço.';
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 7000);
+}
+
+// ── F5.1 Markdown mínimo seguro para respostas da IA ─────────────────────────
+function renderMarkdown(text) {
+  return escapeHTML(text)
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/^- (.+)$/gm, '<li>$1</li>')
+    .replace(/(<li>[^<]*<\/li>\n?)+/g, s => '<ul style="margin:.4rem 0 .4rem 1.2rem;padding:0">' + s + '</ul>')
+    .replace(/\n\n/g, '</p><p style="margin:.5rem 0">')
+    .replace(/\n/g, '<br>');
+}
+
+// ── F0.2 Hash de senha (SHA-256 com salt) ─────────────────────────────────────
+async function hashPass(pass) {
+  const encoded = new TextEncoder().encode('amj_salt_2026_' + pass);
+  const buf = await crypto.subtle.digest('SHA-256', encoded);
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+function isPassHash(s) { return typeof s === 'string' && s.length === 64 && /^[0-9a-f]+$/.test(s); }
+
+// ── F6.1 Formatação de data do diário ────────────────────────────────────────
+function formatJournalDate(val) {
+  if (!val) return '';
+  try {
+    const d = new Date(val);
+    if (isNaN(d.getTime())) return val;
+    return d.toLocaleDateString('pt-BR', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+  } catch { return val; }
 }
 
 // ══════════════════════════════════════
@@ -1280,7 +1338,7 @@ const STUDIES = [
     { type:'content', html:`
       <p class="body-text">Em Levítico 11, Deus estabeleceu quais alimentos são apropriados para o consumo humano. Essa distinção não era apenas ritual — a ciência moderna revela <strong>razões biológicas claras</strong>:</p>
       <p class="body-text" style="margin-top:.5rem"><strong>Animais limpos</strong> (boi, frango, peixe com escamas e barbatanas): digestão eficiente, menor carga de toxinas, proteínas de alta qualidade, menor risco de zoonoses.</p>
-      <p class="body-text" style="margin-top:.5rem"><strong>Animais impróprios</strong> (porco, camarão, caranguejo, enguia, coelho): os porcos digerem alimentos em apenas 4 horas, acumulando toxinas que permanecem na carne. Os frutos do mar sem escamas são filtros naturais das águas e concentram metais pesados e parasitas. <em>O Criador sabia exatamente o que estava dizendo.</em></p>
+      <p class="body-text" style="margin-top:.5rem"><strong>Animais impróprios</strong> (porco, camarão, caranguejo, enguia, coelho): Deus, como Criador, conhece o funcionamento do corpo humano melhor do que qualquer nutricionista. Os princípios dietéticos de Levítico 11 não precisam de validação científica para serem seguidos — eles expressam a sabedoria de quem nos criou e se importa com nosso bem-estar integral. <em>O Criador sabia exatamente o que estava dizendo.</em></p>
       ${V('Levítico 11.2-3','"Estes são os animais que comereis... Todo o animal que tem o casco fendido... e que rumina, esse comereis."')}
       ${V('Levítico 11.9','"Destes comereis de tudo o que está nas águas: tudo o que tem barbatanas e escamas, tanto nos mares como nos rios, isso comereis."')}
     `},
@@ -1390,7 +1448,7 @@ const STUDIES = [
     `},
     { type:'question', html:`
       <div class="content-card" style="background:var(--navy);border-color:rgba(255,255,255,0.1)">
-        <div class="phase-tag" style="color:var(--gold-mid);letter-spacing:1.2px">✦ Recapitulação — Estudo 9</div>
+        <div class="phase-tag" style="color:var(--gold-mid);letter-spacing:1.2px">✦ Recapitulação — Estudo 10</div>
         <p class="body-text" style="color:rgba(255,255,255,0.9);margin-bottom:.75rem">Neste estudo você descobriu que a vida é um presente de Deus — e que administrá-la bem é uma forma de adoração. Templo, Talentos, Tempo e Tesouro: quatro áreas, uma só dedicação.</p>
         <p class="body-text" style="color:#fff;font-style:italic">Você está disposto a colocar cada área da sua vida sob a direção de Cristo?</p>
       </div>
@@ -1447,7 +1505,7 @@ const STUDIES = [
     `},
     { type:'question', html:`
       <div class="content-card" style="background:var(--navy);border-color:rgba(255,255,255,0.1)">
-        <div class="phase-tag" style="color:var(--gold-mid);letter-spacing:1.2px">✦ Recapitulação — Estudo 9</div>
+        <div class="phase-tag" style="color:var(--gold-mid);letter-spacing:1.2px">✦ Recapitulação — Estudo 10</div>
         <p class="body-text" style="color:rgba(255,255,255,0.9);margin-bottom:.75rem">Neste estudo você compreendeu que o Plano da Redenção não terminou na Cruz — e que a volta gloriosa de Jesus é a esperança que sustenta cada discípulo.</p>
         <p class="body-text" style="color:#fff;font-style:italic">Você está disposto a viver com a volta de Jesus como horizonte real das suas escolhas — e a compartilhar essa esperança com alguém próximo?</p>
       </div>
@@ -1503,7 +1561,7 @@ const STUDIES = [
     `},
     { type:'question', html:`
       <div class="content-card" style="background:var(--navy);border-color:rgba(255,255,255,0.1)">
-        <div class="phase-tag" style="color:var(--gold-mid);letter-spacing:1.2px">✦ Recapitulação — Estudo 10</div>
+        <div class="phase-tag" style="color:var(--gold-mid);letter-spacing:1.2px">✦ Recapitulação — Estudo 11</div>
         <p class="body-text" style="color:rgba(255,255,255,0.9);margin-bottom:.75rem">Neste estudo você aprendeu que o crescimento espiritual não vem do esforço próprio — mas de permanecer conectado a Jesus como o ramo à videira.</p>
         <p class="body-text" style="color:#fff;font-style:italic">Você está disposto a consagrar-se a Deus todas as manhãs — fazendo disso sua primeira tarefa — e a confiar que Ele é o Autor e Consumador da sua fé?</p>
       </div>
@@ -1576,7 +1634,7 @@ const STUDIES = [
     `},
     { type:'question', html:`
       <div class="content-card" style="background:var(--navy);border-color:rgba(255,255,255,0.1)">
-        <div class="phase-tag" style="color:var(--gold-mid);letter-spacing:1.2px">✦ Recapitulação — Estudo 11</div>
+        <div class="phase-tag" style="color:var(--gold-mid);letter-spacing:1.2px">✦ Recapitulação — Estudo 12</div>
         <p class="body-text" style="color:rgba(255,255,255,0.9);margin-bottom:.75rem">Neste estudo você descobriu que cada detalhe do santuário bíblico aponta para Jesus — nosso único Sumo Sacerdote e Intercessor no santuário celestial.</p>
         <p class="body-text" style="color:#fff;font-style:italic">Você está disposto a reconhecer Jesus como seu único Mediador diante do Pai — confiando que Ele intercede pelo seu nome agora mesmo no santuário do céu?</p>
       </div>
@@ -1644,7 +1702,7 @@ const STUDIES = [
     `},
     { type:'question', html:`
       <div class="content-card" style="background:var(--navy);border-color:rgba(255,255,255,0.1)">
-        <div class="phase-tag" style="color:var(--gold-mid);letter-spacing:1.2px">✦ Recapitulação — Estudo 12</div>
+        <div class="phase-tag" style="color:var(--gold-mid);letter-spacing:1.2px">✦ Recapitulação — Estudo 13</div>
         <p class="body-text" style="color:rgba(255,255,255,0.9);margin-bottom:.75rem">Neste estudo você compreendeu que a morte é um sono inconsciente, que a alma não é naturalmente imortal, e que a ressurreição de Jesus é a garantia concreta do nosso despertar na segunda vinda.</p>
         <p class="body-text" style="color:#fff;font-style:italic">Você está disposto a depositar sua esperança na ressurreição — vivendo sem o medo da morte e confiando na promessa de Jesus?</p>
       </div>
@@ -1704,7 +1762,7 @@ const STUDIES = [
     `},
     { type:'question', html:`
       <div class="content-card" style="background:var(--navy);border-color:rgba(255,255,255,0.1)">
-        <div class="phase-tag" style="color:var(--gold-mid);letter-spacing:1.2px">✦ Recapitulação — Estudo 13</div>
+        <div class="phase-tag" style="color:var(--gold-mid);letter-spacing:1.2px">✦ Recapitulação — Estudo 14</div>
         <p class="body-text" style="color:rgba(255,255,255,0.9);margin-bottom:.75rem">Neste estudo você viu que os Dez Mandamentos não foram abolidos — foram aprofundados por Jesus, gravados no coração pela Nova Aliança, e são o padrão do povo de Deus nos últimos dias.</p>
         <p class="body-text" style="color:#fff;font-style:italic">Você está disposto a pedir ao Espírito Santo que escreva a Lei de Deus no seu coração — obedecendo não por medo, mas por amor?</p>
       </div>
@@ -1716,10 +1774,10 @@ const STUDIES = [
 },
 
 {
-  title:'Jesus e o cansaço', xp:140, fase:'comprometido',
+  title:'Jesus e o Descanso Sagrado', xp:140, fase:'comprometido',
   phases:[
     { type:'opening', html:()=>`
-      <p class="body-text">${N()}, talvez você tenha se surpreendido com os Dez Mandamentos originais — não os da igreja, mas os escritos pelo dedo de Deus, que citamos no estudo passado. O mais surpreendente é quem se sente na autoridade para mudar a Lei de Deus que define pecado — em outras palavras, tais pessoas redefiniram o que é e o que não é pecado. Chega a ser uma blasfêmia.</p>
+      <p class="body-text">${N()}, ao estudar os Dez Mandamentos surgem algumas perguntas naturais: todos eles ainda se aplicam hoje? Foram dados apenas para os judeus? É possível que ao longo da história algum deles tenha sido modificado por autoridade humana? Este estudo vai examinar dois mandamentos que frequentemente levantam essas questões: o segundo, sobre a singularidade da adoração a Deus, e o quarto, sobre o dia de descanso santificado.</p>
       <p class="body-text" style="margin-top:.6rem">Por outro lado há quem ensine que a Lei de Deus foi abolida por Cristo na Cruz, ou que ela foi resumida em dois mandamentos dispensando a guarda dos dez específicos. Há quem confunda guardar a Lei com legalismo — tentar guardar a Lei para ser salvo. Outros a isolam ao Velho Testamento ou somente aos judeus. Veja quanta confusão!</p>
       <p class="body-text" style="margin-top:.6rem">Este estudo vai examinar dois mandamentos que são especialmente questionados: o <strong>segundo</strong>, sobre imagens de escultura, e o <strong>quarto</strong>, sobre o sétimo dia santificado.</p>
       ${V('1 João 3.4','"Todo aquele que pratica o pecado também transgride a lei, porque o pecado é a transgressão da lei."')}
@@ -1760,7 +1818,7 @@ const STUDIES = [
     `},
     { type:'question', html:`
       <div class="content-card" style="background:var(--navy);border-color:rgba(255,255,255,0.1)">
-        <div class="phase-tag" style="color:var(--gold-mid);letter-spacing:1.2px">✦ Recapitulação — Estudo 14</div>
+        <div class="phase-tag" style="color:var(--gold-mid);letter-spacing:1.2px">✦ Recapitulação — Estudo 15</div>
         <p class="body-text" style="color:rgba(255,255,255,0.9);margin-bottom:.75rem">Neste estudo você descobriu que o segundo mandamento protege a singularidade de Deus na adoração, e que o sábado foi instituído no Éden — antes do pecado — como sinal eterno entre Deus e o Seu povo.</p>
         <p class="body-text" style="color:#fff;font-style:italic">Você está disposto a honrar o sábado como dia santo — separando do pôr do sol de sexta ao pôr do sol de sábado para Deus, descanso e comunidade?</p>
       </div>
@@ -1829,7 +1887,7 @@ const STUDIES = [
     `},
     { type:'question', html:`
       <div class="content-card" style="background:var(--navy);border-color:rgba(255,255,255,0.1)">
-        <div class="phase-tag" style="color:var(--gold-mid);letter-spacing:1.2px">✦ Recapitulação — Estudo 15</div>
+        <div class="phase-tag" style="color:var(--gold-mid);letter-spacing:1.2px">✦ Recapitulação — Estudo 16</div>
         <p class="body-text" style="color:rgba(255,255,255,0.9);margin-bottom:.75rem">Neste estudo você compreendeu que o juízo investigativo é o antítipo do Dia da Expiação — e que Jesus, nosso Sumo Sacerdote e Advogado, ministra agora no santuário celestial em nosso favor. Graça e juízo não se contradizem: caminham juntos.</p>
         <p class="body-text" style="color:#fff;font-style:italic">Você está disposto a viver com a consciência de que o juízo já está em andamento — confiando em Jesus como seu único Advogado e Representante diante do Pai?</p>
       </div>
@@ -1937,7 +1995,11 @@ function addAIMsg(role, text) {
   const msgs = document.getElementById('ai-msgs');
   const div = document.createElement('div');
   div.className = `ai-msg ${role}`;
-  div.textContent = text;
+  if (role === 'bot') {
+    div.innerHTML = '<p style="margin:.5rem 0">' + renderMarkdown(text) + '</p>';
+  } else {
+    div.textContent = text;
+  }
   msgs.appendChild(div);
   msgs.scrollTop = msgs.scrollHeight;
   return div;
@@ -1955,7 +2017,6 @@ async function sendAI() {
   input.value = '';
 
   addAIMsg('user', question);
-  aiHistory.push({ role:'user', content: question });
 
   const loading = addAIMsg('bot', '...');
   loading.classList.add('loading');
@@ -2053,22 +2114,24 @@ VERIFICAÇÃO FINAL
 Antes de finalizar cada resposta, pergunte-se: "Esta resposta aproxima a pessoa de Jesus, da Bíblia e de uma compreensão mais profunda da verdade?" Se não, reformule. Seu propósito é ensinar, discipular, restaurar e conduzir pessoas aos pés do Mestre Jesus.`;
 
   try {
+    const historyForRequest = [...aiHistory, { role:'user', content: question }];
     const response = await fetch(AI_PROXY_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         system: systemPrompt,
-        messages: aiHistory
+        messages: historyForRequest
       })
     });
     const data = await response.json();
     if (!data.ok) throw new Error(data.error || 'Erro desconhecido');
     const reply = data.reply || 'Desculpe, não consegui responder agora. Tente novamente.';
-    loading.textContent = reply;
-    loading.classList.remove('loading');
+    // Só adiciona ao histórico após resposta bem-sucedida
+    aiHistory.push({ role:'user', content: question });
     aiHistory.push({ role:'assistant', content: reply });
-    // Keep history manageable
     if (aiHistory.length > 20) aiHistory = aiHistory.slice(-20);
+    loading.innerHTML = '<p style="margin:.5rem 0">' + renderMarkdown(reply) + '</p>';
+    loading.classList.remove('loading');
   } catch(e) {
     loading.textContent = 'Erro de conexão. Verifique sua internet e tente novamente.';
     loading.classList.remove('loading');
@@ -2115,7 +2178,7 @@ function openShare() {
 
 function copyLink() {
   navigator.clipboard?.writeText(APP_URL).then(() => {
-    alert('Link copiado! Cole no WhatsApp, e-mail ou onde quiser.');
+    showModal({ title: 'Link copiado!', message: 'Cole no WhatsApp, e-mail ou onde quiser.', actions: [{ label: 'OK', onclick: 'closeModal()', primary: true }] });
   }).catch(() => {
     prompt('Copie o link abaixo:', APP_URL);
   });
@@ -2138,9 +2201,10 @@ function getTutorPassStore() {
     return JSON.parse(localStorage.getItem('amjTutorPass') || '{}');
   } catch { return {}; }
 }
-function setTutorPass(tutorName, pass) {
+async function setTutorPass(tutorName, pass) {
+  const hash = await hashPass(pass);
   const store = getTutorPassStore();
-  store[tutorName] = pass;
+  store[tutorName] = hash;
   try { localStorage.setItem('amjTutorPass', JSON.stringify(store)); } catch {}
 }
 function getTutorPass(tutorName) {
@@ -2198,7 +2262,7 @@ function renderTutorLoginHint() {
   }
 }
 
-function tutorLogin() {
+async function tutorLogin() {
   const idx = parseInt(document.getElementById('tp-tutor-select').value, 10);
   const pass = document.getElementById('tp-pass-input').value;
   const tutor = TUTORS[idx];
@@ -2210,14 +2274,24 @@ function tutorLogin() {
   }
 
   if (!tutorHasPass(tutor.name)) {
-    // primeiro acesso: cadastra a senha digitada
-    setTutorPass(tutor.name, pass);
+    // primeiro acesso: cadastra a senha como hash
+    await setTutorPass(tutor.name, pass);
     ST.tutorPanelAuth = tutor.name;
     renderTutorMenu(tutor);
     return;
   }
 
-  if (pass !== getTutorPass(tutor.name)) {
+  const stored = getTutorPass(tutor.name);
+  let match;
+  if (isPassHash(stored)) {
+    match = (await hashPass(pass)) === stored;
+  } else {
+    // senha legada em texto puro — compara e migra para hash
+    match = pass === stored;
+    if (match) await setTutorPass(tutor.name, pass);
+  }
+
+  if (!match) {
     renderTutorLogin('Senha incorreta. Tente novamente.');
     return;
   }
@@ -2253,7 +2327,7 @@ function renderTutorResetPass() {
     </div>`;
 }
 
-function tutorResetPass() {
+async function tutorResetPass() {
   const idx = parseInt(document.getElementById('tp-tutor-select')?.value ?? '0', 10);
   const tutor = TUTORS[idx];
   const isAuthenticated = ST.tutorPanelAuth === tutor.name;
@@ -2262,7 +2336,9 @@ function tutorResetPass() {
 
   if (isAuthenticated) {
     const oldPass = document.getElementById('tp-old-pass').value;
-    if (oldPass !== getTutorPass(tutor.name)) {
+    const stored = getTutorPass(tutor.name);
+    const match = isPassHash(stored) ? (await hashPass(oldPass)) === stored : oldPass === stored;
+    if (!match) {
       msg.innerHTML = '<span style="color:#E05050">Senha atual incorreta.</span>';
       return;
     }
@@ -2272,7 +2348,7 @@ function tutorResetPass() {
     return;
   }
 
-  setTutorPass(tutor.name, newPass);
+  await setTutorPass(tutor.name, newPass);
   renderTutorLogin();
 }
 
@@ -2502,9 +2578,7 @@ function openPanel() {
   showScreen('panel');
   const attrs = getAttrs();
   const lv = getRpgLevel();
-  const tutor = ST.tutor === 'guest'
-    ? { name: ST.guestTutor?.name || 'Tutor Convidado', icon:'🤝', wa: ST.guestTutor?.wa || '' }
-    : ST.tutor !== undefined ? TUTORS[ST.tutor] : null;
+  const tutor = ST.tutor !== undefined ? TUTORS[ST.tutor] : null;
   const attrRows = ATTRIBUTES.map(a =>
     `<div class="panel-stat"><span>${a.icon} ${a.label}</span><strong>${attrs[a.id]||0}/100</strong></div>`
   ).join('');
@@ -2701,7 +2775,7 @@ const JOURNEY_MISSIONS = [
   { id:'mj_s13',       label:'Concluir o Estudo 13 — A Ressurreição dos Mortos', icon:'🌅', xp:30, unlock:[11], check:()=>ST.done.includes(12) },
   { id:'mj_s14',       label:'Concluir o Estudo 14 — Jesus e os Dez Mandamentos', icon:'📜', xp:30, unlock:[12], check:()=>ST.done.includes(13) },
   // Estudo 14
-  { id:'mj_s15',       label:'Concluir o Estudo 15 — Jesus e o Cansaço',   icon:'🌄', xp:30,  unlock:[13], check:()=>ST.done.includes(14) },
+  { id:'mj_s15',       label:'Concluir o Estudo 15 — Jesus e o Descanso Sagrado',   icon:'🌄', xp:30,  unlock:[13], check:()=>ST.done.includes(14) },
   { id:'mj_streak7',   label:'Estudar 7 dias seguidos',                     icon:'🔥', xp:100, unlock:[14], check:()=>ST.streak>=7 },
   // Estudos 15–16
   { id:'mj_s16',       label:'Concluir o Estudo 16 — Jesus e a Missão',     icon:'🎯', xp:30,  unlock:[14], check:()=>ST.done.includes(15) },
@@ -2861,6 +2935,47 @@ function renderMissions(){
 
 let jTab='entries';
 function openJournal(){ showScreen('journal'); renderJournal(); }
+
+function downloadFile(filename, content, type) {
+  const blob = new Blob([content], { type });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function exportJournalText() {
+  const entries = ST.journal || [];
+  if (!entries.length) {
+    showModal({ title: 'Diário vazio', message: 'Nenhuma entrada no diário ainda.', actions: [{ label: 'OK', onclick: 'closeModal()', primary: true }] });
+    return;
+  }
+  const lines = entries.map((e, i) => [
+    `--- Entrada ${i + 1} — ${formatJournalDate(e.date)} ---`,
+    `Estudo: ${e.study || ''}`,
+    e.learned  ? `O que aprendi: ${e.learned}`              : '',
+    e.godSaid  ? `O que Deus falou comigo: ${e.godSaid}`    : '',
+    e.change   ? `O que preciso mudar: ${e.change}`         : '',
+    e.prayer   ? `Minha oração: ${e.prayer}`                : '',
+    e.decision ? `Minha decisão: ${e.decision}`             : ''
+  ].filter(Boolean).join('\n')).join('\n\n');
+  downloadFile(
+    'diario-espiritual-' + new Date().toISOString().slice(0,10) + '.txt',
+    `Diário Espiritual — ${ST.userName || 'Discípulo'}\n\n${lines}`,
+    'text/plain;charset=utf-8'
+  );
+}
+
+function exportJournalJSON() {
+  const data = { exportDate: new Date().toISOString(), userName: ST.userName, entries: ST.journal || [] };
+  downloadFile(
+    'diario-espiritual-' + new Date().toISOString().slice(0,10) + '.json',
+    JSON.stringify(data, null, 2),
+    'application/json'
+  );
+}
 function journalBack(){
   if (pendingJournalIdx !== null && !hasJournalForStudy(pendingJournalIdx)) {
     showScreen('complete');
@@ -2883,13 +2998,13 @@ function renderJournal(){
     if(!entries.length){ body.innerHTML=`<div class="journal-empty">Nenhum registro ainda.<br>Após cada estudo, registre o que Deus falou com você.</div>`; return; }
     body.innerHTML=entries.map(e=>`
       <div class="journal-entry-wrap">
-        <div class="journal-entry-hdr"><span>${e.study||'Registro'}</span><small>${e.date||''}</small></div>
+        <div class="journal-entry-hdr"><span>${escapeHTML(e.study||'Registro')}</span><small>${escapeHTML(formatJournalDate(e.date))}</small></div>
         <div class="journal-entry-body">
-          ${e.learned?`<div class="journal-field"><label>O que aprendi</label><p>${e.learned}</p></div>`:''}
-          ${e.godSaid?`<div class="journal-field"><label>O que Deus falou comigo</label><p>${e.godSaid}</p></div>`:''}
-          ${e.change ?`<div class="journal-field"><label>O que preciso mudar</label><p>${e.change}</p></div>`:''}
-          ${e.prayer ?`<div class="journal-field"><label>Minha oração</label><p>${e.prayer}</p></div>`:''}
-          ${e.decision?`<div class="journal-field"><label>Minha decisão</label><p>${e.decision}</p></div>`:''}
+          ${e.learned?`<div class="journal-field"><label>O que aprendi</label><p>${escapeHTML(e.learned)}</p></div>`:''}
+          ${e.godSaid?`<div class="journal-field"><label>O que Deus falou comigo</label><p>${escapeHTML(e.godSaid)}</p></div>`:''}
+          ${e.change ?`<div class="journal-field"><label>O que preciso mudar</label><p>${escapeHTML(e.change)}</p></div>`:''}
+          ${e.prayer ?`<div class="journal-field"><label>Minha oração</label><p>${escapeHTML(e.prayer)}</p></div>`:''}
+          ${e.decision?`<div class="journal-field"><label>Minha decisão</label><p>${escapeHTML(e.decision)}</p></div>`:''}
         </div>
       </div>`).join('');
   } else {
@@ -2911,7 +3026,7 @@ function renderJournal(){
 
 function saveJournalEntry(studyTitle){
   const get=id=>document.getElementById(id)?.value.trim()||'';
-  const entry={study:studyTitle,date:new Date().toLocaleDateString('pt-BR'),
+  const entry={study:studyTitle,date:new Date().toISOString(),
     studyIdx: pendingJournalIdx,
     learned:get('j-learned'),godSaid:get('j-godsaid'),change:get('j-change'),
     prayer:get('j-prayer'),decision:get('j-decision')};
@@ -2947,7 +3062,7 @@ const RPG_LEVELS = [
   { name:'Aprendiz',              icon:'📖', min:240,  desc:'Você está construindo fundamentos sólidos na Palavra de Deus e permitindo que Cristo transforme seu coração.<br><em>Estudos: 4. Jesus e o Perdão · 5. Jesus e os Outros</em>',                                                                                                                                         next:'Persevere para alcançar o nível Discípulo.' },
   { name:'Discípulo',             icon:'🙏', min:400,  desc:'Você compreende a importância da comunhão com Deus e com Seu povo, crescendo em fé e relacionamento.<br><em>Estudos: 6. Andando com os Amigos de Jesus · 7. Jesus e o Sofrimento · 8. Jesus e a Saúde · 9. Jesus e a Administração da Vida</em>',                                                                                                          next:'Aprofunde-se para se tornar Guardião da Aliança.' },
   { name:'Guardião da Aliança',   icon:'🕊️', min:700,  desc:'Você está descobrindo as grandes verdades do Reino de Deus, Sua justiça, Seu juízo e Sua promessa de restauração.<br><em>Estudos: 10. Jesus Irá Voltar? · 11. Jesus e o Juízo Final · 12. Jesus Quer Morar com Você · 13. Jesus e a Ressurreição dos Mortos · 14. Jesus e os Dez Mandamentos</em>',                next:'Avance para se tornar Descansando em Cristo.' },
-  { name:'Descansando em Cristo', icon:'🌄', min:1100, desc:'Você aprende a confiar plenamente em Cristo, encontrando descanso em Sua salvação e em Sua presença.<br><em>Estudo: 15. Jesus e o Cansaço</em>',                                                                                                                                                                      next:'Siga em frente para se tornar Embaixador do Reino.' },
+  { name:'Descansando em Cristo', icon:'🌄', min:1100, desc:'Você aprende a confiar plenamente em Cristo, encontrando descanso em Sua salvação e em Sua presença.<br><em>Estudo: 15. Jesus e o Descanso Sagrado</em>',                                                                                                                                                                      next:'Siga em frente para se tornar Embaixador do Reino.' },
   { name:'Embaixador do Reino',   icon:'🔥', min:1200, desc:'Você compreende que todo discípulo é chamado para servir, testemunhar e participar da missão de Jesus no mundo.<br><em>Estudos: 16. Jesus e a Missão · 17. Jesus? Eu Não Poderia Deixar de Segui-Lo!</em>',                                                                                                           next:'O nível final aguarda: Cooperador de Cristo.' },
   { name:'Cooperador de Cristo',  icon:'👑', min:1400, desc:'"Vinde e vede." Você aceitou o convite do Mestre, caminhou com Ele, aprendeu Seus ensinos, abraçou Sua missão e está preparado para ajudar outros a iniciarem sua própria jornada de fé.<br><em>Conquista: Concluiu os 16 estudos + módulo Plus (A História da Igreja Adventista · O Papel de Ellen White na Igreja)</em>', next:'' }
 ];
@@ -3022,11 +3137,14 @@ function faseUnlocked(i) {
   return f.ids.every(id => ST.done.includes(id));
 }
 function getCurrentLevelIdx() {
+  // A fase muda apenas quando o usuário ENTRA na próxima — ou seja, quando completa
+  // pelo menos um estudo daquela fase (não quando termina todos os da fase anterior).
   let idx = 0;
   for (let i = RPG_LEVELS.length - 2; i >= 0; i--) {
-    if (faseUnlocked(i)) { idx = i; break; }
+    const f = FASE_UNLOCK[i];
+    if (!f || f.ids.length === 0) continue;
+    if (f.ids.some(id => ST.done.includes(id))) { idx = i; break; }
   }
-  if (faseUnlocked(idx) && idx < RPG_LEVELS.length - 1) idx = idx + 1;
   return idx;
 }
 
@@ -3125,10 +3243,7 @@ function renderAIArea() {
 
 
 function renderTutorArea() {
-  const isGuest = ST.tutor === 'guest';
-  const tutor = isGuest
-    ? { name: ST.guestTutor?.name || 'Tutor Convidado', icon:'🤝', wa: ST.guestTutor?.wa || '' }
-    : ST.tutor !== undefined ? TUTORS[ST.tutor] : null;
+  const tutor = ST.tutor !== undefined ? TUTORS[ST.tutor] : null;
   const area = document.getElementById('h-tutor-area');
   if (tutor) {
     area.innerHTML = `
@@ -3184,7 +3299,6 @@ function removeFixedTutorBtn() {
 
 function openTutor() {
   const list = document.getElementById('tutor-list');
-  const guestSelected = ST.tutor === 'guest';
 
   const fixedCards = TUTORS.map((t, i) => `
     <div class="tutor-card ${ST.tutor === i ? 'selected' : ''}" onclick="selectTutor(${i})">
@@ -3196,58 +3310,9 @@ function openTutor() {
       ${ST.tutor === i ? '<div style="font-size:22.5px">✓</div>' : ''}
     </div>`).join('');
 
-  // Guest tutor card
-  const guestName = ST.guestTutor?.name || '';
-  const guestWa   = ST.guestTutor?.wa   || '';
-  const guestCard = `
-    <div class="tutor-card ${guestSelected ? 'selected' : ''}" id="guest-tutor-card" style="flex-direction:column;align-items:flex-start;gap:.6rem">
-      <div style="display:flex;align-items:center;gap:10px;width:100%">
-        <div class="tutor-avatar">🤝</div>
-        <div class="tutor-info">
-          <div class="tutor-name">Tutor Convidado</div>
-          <div class="tutor-role">Alguém da sua comunidade de fé</div>
-        </div>
-        ${guestSelected ? '<div style="font-size:22.5px">✓</div>' : ''}
-      </div>
-      <div style="width:100%;display:flex;flex-direction:column;gap:6px" id="guest-tutor-form">
-        <input id="guest-name" type="text" value="${guestName}" placeholder="Nome do tutor convidado"
-          style="width:100%;border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:.6rem .85rem;font-size:17.5px;font-family:var(--ff-body);outline:none;background:var(--bg);color:var(--text)"
-          oninput="updateGuestTutor()">
-        <div style="display:flex;align-items:center;gap:6px">
-          <span style="font-size:16px;color:var(--text3);white-space:nowrap">+55</span>
-          <input id="guest-wa" type="tel" value="${guestWa}" placeholder="WhatsApp (somente números)"
-            style="flex:1;border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:.6rem .85rem;font-size:17.5px;font-family:var(--ff-body);outline:none;background:var(--bg);color:var(--text)"
-            oninput="updateGuestTutor()">
-        </div>
-        <button onclick="selectGuestTutor()" style="background:var(--teal);color:#fff;border:none;border-radius:var(--radius-sm);padding:.6rem;font-size:16px;cursor:pointer;font-family:var(--ff-body);width:100%">
-          ✓ Confirmar tutor convidado
-        </button>
-      </div>
-    </div>`;
-
-  list.innerHTML = fixedCards + guestCard;
+  list.innerHTML = fixedCards;
   renderTutorWaBtn();
   showScreen('tutor');
-}
-
-function updateGuestTutor() {
-  const name = document.getElementById('guest-name')?.value.trim() || '';
-  const wa   = document.getElementById('guest-wa')?.value.replace(/\D/g,'') || '';
-  ST.guestTutor = { name, wa: '55' + wa };
-  save(ST);
-}
-
-function selectGuestTutor() {
-  const name = document.getElementById('guest-name')?.value.trim() || '';
-  const wa   = document.getElementById('guest-wa')?.value.replace(/\D/g,'') || '';
-  if (!name || !wa) { alert('Preencha o nome e o WhatsApp do tutor convidado.'); return; }
-  ST.guestTutor = { name, wa: '55' + wa };
-  ST.tutor = 'guest';
-  save(ST);
-  renderTutorWaBtn();
-  // Update card visual
-  document.querySelectorAll('.tutor-card').forEach(c => c.classList.remove('selected'));
-  document.getElementById('guest-tutor-card')?.classList.add('selected');
 }
 
 function selectTutor(i) {
@@ -3259,9 +3324,7 @@ function selectTutor(i) {
 function renderTutorWaBtn() {
   const wrap = document.getElementById('tutor-wa-wrap');
   if (ST.tutor === undefined) { wrap.style.display='none'; return; }
-  const t = ST.tutor === 'guest'
-    ? { name: ST.guestTutor?.name || 'Tutor Convidado', wa: ST.guestTutor?.wa || '' }
-    : TUTORS[ST.tutor];
+  const t = TUTORS[ST.tutor];
   if (!t.wa) { wrap.style.display='none'; return; }
   const msg = encodeURIComponent(`Olá ${t.name}! Sou discípulo do app "Aos Pés do Mestre Jesus" e gostaria de conversar sobre minha jornada.`);
   wrap.style.display = '';
@@ -3290,7 +3353,7 @@ const BADGES = [
   {id:'nivel3',  name:'Aprendiz',              icon:'📖', desc:'Concluiu: 4. Jesus e o Perdão · 5. Jesus e os Outros'},
   {id:'nivel4',  name:'Discípulo',             icon:'🙏', desc:'Concluiu: 6. Andando com os Amigos de Jesus · 7. Jesus e o Sofrimento · 8. Jesus e a Saúde · 9. Jesus e a Administração da Vida'},
   {id:'nivel5',  name:'Guardião da Aliança',   icon:'🕊️', desc:'Concluiu: 10–14'},
-  {id:'nivel6',  name:'Descansando em Cristo', icon:'🌄', desc:'Concluiu: 14. Jesus e o Cansaço'},
+  {id:'nivel6',  name:'Descansando em Cristo', icon:'🌄', desc:'Concluiu: 14. Jesus e o Descanso Sagrado'},
   {id:'nivel7',  name:'Embaixador do Reino',   icon:'🔥', desc:'Concluiu: 15. Jesus e a Missão · 16. Jesus? Eu Não Poderia Deixar de Segui-Lo!'},
   {id:'complete',name:'Cooperador de Cristo',  icon:'👑', desc:'Concluiu os 16 estudos da Jornada Discipular e o módulo Plus.'},
   {id:'streak7', name:'7 dias seguidos',       icon:'⚡', desc:'7 dias consecutivos de estudo.'},
@@ -3316,9 +3379,6 @@ const PHASE_TAG_CSS = {
 const SYNC_URL = 'https://script.google.com/macros/s/AKfycbz1eoMpd6OwunBWtBRwCUbcg40wZvk89cIu2KA2PwuGb1HbZ4hpO91tOo-IRmjnNoy1/exec';
 
 function getTutorNameForSync() {
-  if (ST.tutor === 'guest') {
-    return ST.guestTutor?.name ? ('Convidado: ' + ST.guestTutor.name) : 'Tutor Convidado';
-  }
   if (ST.tutor !== undefined && TUTORS[ST.tutor]) return TUTORS[ST.tutor].name;
   return '';
 }
@@ -3369,12 +3429,17 @@ function syncToTutorBackend() {
 
 function save(s) {
   const data = JSON.stringify(s);
-  try { localStorage.setItem('amj3', data); } catch {}
+  try {
+    localStorage.setItem('amj3', data);
+  } catch (e) {
+    if (e.name === 'QuotaExceededError' || e.name === 'NS_ERROR_DOM_QUOTA_REACHED') showStorageWarning();
+  }
   try { sessionStorage.setItem('amj3', data); } catch {}
   try {
     const exp = new Date();
     exp.setFullYear(exp.getFullYear() + 1);
-    document.cookie = 'amj3=' + encodeURIComponent(data) + ';expires=' + exp.toUTCString() + ';path=/;SameSite=Lax';
+    const secureFlag = location.protocol === 'https:' ? ';Secure' : '';
+    document.cookie = 'amj3=' + encodeURIComponent(data) + ';expires=' + exp.toUTCString() + ';path=/;SameSite=Strict' + secureFlag;
   } catch {}
   syncToTutorBackend();
 }
@@ -3397,13 +3462,25 @@ function load() {
   } catch {}
   return {};
 }
-let ST = load();
-ST.xp      = ST.xp || 0;
-ST.done    = ST.done || [];
-ST.badges  = ST.badges || [];
-ST.streak  = ST.streak || 0;
-ST.lastDate= ST.lastDate || null;
-ST.obstacleActions = ST.obstacleActions || {};
+const SCHEMA_VERSION = 1;
+function migrateSchema(st) {
+  if (!st._v) {
+    st.xp              = st.xp              || 0;
+    st.done            = st.done            || [];
+    st.badges          = st.badges          || [];
+    st.streak          = st.streak          || 0;
+    st.lastDate        = st.lastDate        || null;
+    st.journal         = st.journal         || [];
+    st.missions        = st.missions        || {};
+    st.completedAt     = st.completedAt     || {};
+    st.obstacleActions = st.obstacleActions || {};
+    st.missionsDone    = st.missionsDone    || [];
+    st._v = 1;
+  }
+  // Futuras migrações: if (st._v === 1) { ...; st._v = 2; }
+  return st;
+}
+let ST = migrateSchema(load());
 
 function updStreak() {
   const t = new Date().toDateString();
@@ -3854,27 +3931,28 @@ function openBonus() {
 }
 
 function confirmRestart() {
-  const body = document.getElementById('tutorpanel-body');
-  // Usa a tela de tutores como modal de confirmação, ou um confirm nativo
-  const ok = confirm(
-    '⚠️ Recomeçar a jornada?\n\n' +
-    'Seus estudos concluídos, XP e conquistas serão zerados. ' +
-    'Seu diário espiritual e seus dados de tutor serão mantidos.\n\n' +
-    'Deseja continuar?'
-  );
-  if (!ok) return;
-
-  // Zera progresso mantendo nome, perfil, tutor e diário
-  ST.done        = [];
-  ST.xp          = 0;
-  ST.streak      = 0;
-  ST.lastStudy   = null;
-  ST.lastDate    = null;
-  ST.completedAt = {};
-  ST.missions    = {};
+  showModal({
+    title: 'Recomeçar a jornada?',
+    message: 'Seus estudos, XP e conquistas serão zerados. Seu diário e dados de tutor serão mantidos.',
+    actions: [
+      { label: 'Cancelar',       onclick: 'closeModal()',              primary: false },
+      { label: 'Sim, recomeçar', onclick: 'doRestart();closeModal()',  primary: true  }
+    ]
+  });
+}
+function doRestart() {
+  ST.done            = [];
+  ST.xp              = 0;
+  ST.streak          = 0;
+  ST.lastStudy       = null;
+  ST.lastDate        = null;
+  ST.completedAt     = {};
+  ST.missions        = {};
+  ST.missionsDone    = [];
+  ST.badges          = [];
+  ST.obstacleActions = {};
   pendingJournalIdx   = null;
   pendingJournalTitle = null;
-
   save(ST);
   goHome();
 }
@@ -3925,10 +4003,6 @@ function selectWelcomeTutor(idx) {
     const ch = document.getElementById('wtc-check-'+i);
     if (ch) ch.textContent = '';
   });
-  // Reset guest
-  document.getElementById('wtc-guest')?.classList.remove('selected');
-  document.getElementById('wtc-check-guest').textContent = '';
-  document.getElementById('guest-fields-welcome').style.display = 'none';
   // Select chosen
   document.getElementById('wtc-'+idx)?.classList.add('selected');
   const ch = document.getElementById('wtc-check-'+idx);
@@ -3941,49 +4015,14 @@ function selectWelcomeTutor(idx) {
   save(ST);
 }
 
-function selectGuestWelcomeCard() {
-  // Reset fixed cards
-  [0,1,2,3].forEach(i => {
-    document.getElementById('wtc-'+i)?.classList.remove('selected');
-    const ch = document.getElementById('wtc-check-'+i);
-    if (ch) ch.textContent = '';
-  });
-  welcomeTutorSelected = 'guest';
-  document.getElementById('wtc-guest')?.classList.add('selected');
-  document.getElementById('wtc-check-guest').textContent = '✓';
-  document.getElementById('guest-fields-welcome').style.display = 'flex';
-  document.getElementById('guest-fields-welcome').style.flexDirection = 'column';
-  document.getElementById('guest-fields-welcome').style.gap = '6px';
-}
-
-function confirmGuestWelcome() {
-  const name = document.getElementById('gw-name')?.value.trim() || '';
-  const wa   = document.getElementById('gw-wa')?.value.replace(/\D/g,'') || '';
-  if (!name || !wa) { alert('Preencha o nome e o WhatsApp do tutor convidado.'); return; }
-  ST.guestTutor = { name, wa: '55' + wa };
-  ST.tutor = 'guest';
-  save(ST);
-  document.getElementById('welcome-confirm-msg').classList.add('visible');
-  document.getElementById('start-btn').disabled = false;
-}
-
 function startJourney() {
-  if (ST.tutor === undefined) { alert('Escolha um tutor para começar!'); return; }
+  if (ST.tutor === undefined) { showModal({ title: 'Escolha um tutor', message: 'Selecione um tutor antes de iniciar a jornada.', actions: [{ label: 'OK', onclick: 'closeModal()', primary: true }] }); return; }
   ST.welcomeDone = true;
   save(ST);
   showScreen('home');
   renderHome();
-  renderFixedTutorBtn(
-    ST.tutor === 'guest'
-      ? { name: ST.guestTutor?.name || 'Tutor Convidado', wa: ST.guestTutor?.wa || '' }
-      : TUTORS[ST.tutor]
-  );
+  renderFixedTutorBtn(TUTORS[ST.tutor]);
 }
-
-// Click guest card header to open fields
-document.getElementById('wtc-guest').addEventListener('click', function(e) {
-  if (!e.target.closest('#guest-fields-welcome')) selectGuestWelcomeCard();
-});
 
 // Restore welcome state: if already done, go straight to home
 function initApp() {
@@ -3991,10 +4030,7 @@ function initApp() {
     showScreen('home');
     renderHome();
     if (ST.tutor !== undefined) {
-      const t = ST.tutor === 'guest'
-        ? { name: ST.guestTutor?.name || 'Tutor Convidado', wa: ST.guestTutor?.wa || '' }
-        : TUTORS[ST.tutor];
-      renderFixedTutorBtn(t);
+      renderFixedTutorBtn(TUTORS[ST.tutor]);
     }
   } else {
     showScreen('welcome');
@@ -4012,6 +4048,15 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('service-worker.js')
       .then(reg => console.log('SW ok'))
       .catch(err => console.log('SW erro:', err));
+  });
+}
+// F4.2 — iOS: ajusta altura da tela de IA quando teclado virtual abre
+if (window.visualViewport) {
+  window.visualViewport.addEventListener('resize', () => {
+    const aiScreen = document.getElementById('screen-ai');
+    if (aiScreen && aiScreen.classList.contains('active')) {
+      aiScreen.querySelector('.ai-screen').style.height = (window.visualViewport.height - 56) + 'px';
+    }
   });
 }
 
@@ -4047,7 +4092,7 @@ function handleInstallClick() {
   const msg = isIOS
     ? 'Para adicionar à tela inicial no iPhone/iPad:\n\n1. Toque no ícone de Compartilhar (□↑) na barra do Safari\n2. Escolha "Adicionar à Tela de Início"'
     : 'Para criar o atalho:\n\n1. Abra o menu do navegador (⋮ ou •••)\n2. Escolha "Instalar app" ou "Adicionar à tela inicial / área de trabalho"';
-  alert(msg);
+  showModal({ title: 'Instalar app', message: msg, actions: [{ label: 'OK', onclick: 'closeModal()', primary: true }] });
 }
 </script>
 </body>

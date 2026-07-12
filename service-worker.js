@@ -1,4 +1,5 @@
 const CACHE_NAME = 'amj-v3';
+const FONTS_CACHE = 'amj-fonts-v1';
 const ASSETS = [
   './',
   './index.html',
@@ -15,11 +16,11 @@ self.addEventListener('install', event => {
   self.skipWaiting();
 });
 
-// Limpa caches antigos
+// Limpa caches antigos (preserva o cache de fontes)
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
+      Promise.all(keys.filter(k => k !== CACHE_NAME && k !== FONTS_CACHE).map(k => caches.delete(k)))
     )
   );
   self.clients.claim();
@@ -40,6 +41,22 @@ self.addEventListener('fetch', event => {
   // Requisições para a API Anthropic — sempre online
   if (url.hostname === 'api.anthropic.com') {
     event.respondWith(fetch(event.request));
+    return;
+  }
+
+  // Google Fonts — Cache First com atualização em background (stale-while-revalidate)
+  if (url.hostname === 'fonts.gstatic.com' || url.hostname === 'fonts.googleapis.com') {
+    event.respondWith(
+      caches.open(FONTS_CACHE).then(cache =>
+        cache.match(event.request).then(cached => {
+          const networkFetch = fetch(event.request).then(response => {
+            if (response.ok) cache.put(event.request, response.clone());
+            return response;
+          }).catch(() => cached);
+          return cached || networkFetch;
+        })
+      )
+    );
     return;
   }
 
