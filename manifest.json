@@ -4,8 +4,8 @@
   "description": "Jornada Discipular — Hospital Adventista Silvestre",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#004D4D",
-  "theme_color": "#004D4D",
+  "background_color": "#008B8B",
+  "theme_color": "#008B8B",
   "orientation": "portrait",
   "lang": "pt-BR",
   "icons": [

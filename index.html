@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="theme-color" content="#004D4D">
+<meta name="theme-color" content="#008B8B">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Aos Pés do Mestre">
@@ -3560,6 +3560,7 @@ function migrateSchema(st) {
     st.completedAt     = st.completedAt     || {};
     st.obstacleActions = st.obstacleActions || {};
     st.missionsDone    = st.missionsDone    || [];
+    st.lastExportReminder = st.lastExportReminder || null;
     st._v = 1;
   }
   // Futuras migrações: if (st._v === 1) { ...; st._v = 2; }
@@ -4094,6 +4095,24 @@ function notifyTutorOfNewDisciple() {
 }
 
 // Restore welcome state: if already done, go straight to home
+function checkExportReminder() {
+  const entries = ST.journal || [];
+  if (!entries.length) return;
+  const sevenDays = 7 * 24 * 60 * 60 * 1000;
+  const last = ST.lastExportReminder ? new Date(ST.lastExportReminder).getTime() : 0;
+  if (Date.now() - last < sevenDays) return;
+  ST.lastExportReminder = new Date().toISOString();
+  save(ST);
+  showModal({
+    title: '📔 Faça backup do seu diário',
+    message: `Você tem ${entries.length} registro(s) no diário espiritual, salvos apenas neste aparelho. Exporte periodicamente para não perder suas anotações.`,
+    actions: [
+      { label: 'Depois',         onclick: 'closeModal()',                     primary: false },
+      { label: 'Exportar agora', onclick: 'closeModal();exportJournalMenu()', primary: true  }
+    ]
+  });
+}
+
 function initApp() {
   if (ST.welcomeDone) {
     showScreen('home');
@@ -4101,6 +4120,7 @@ function initApp() {
     if (ST.tutor !== undefined) {
       renderFixedTutorBtn(TUTORS[ST.tutor]);
     }
+    checkExportReminder();
   } else {
     showScreen('welcome');
   }
