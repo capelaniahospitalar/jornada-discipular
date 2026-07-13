@@ -1,0 +1,51 @@
+name: Build & Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install minifier
+        run: npm install html-minifier-terser --save-dev
+
+      - name: Create dist directory
+        run: mkdir -p dist
+
+      - name: Minify index.html
+        run: |
+          npx html-minifier-terser index.html \
+            --collapse-whitespace \
+            --remove-comments \
+            --remove-redundant-attributes \
+            --minify-css true \
+            --minify-js '{"compress":{"drop_console":false},"mangle":false}' \
+            -o dist/index.html
+
+      - name: Copy static assets
+        run: |
+          cp manifest.json dist/
+          cp service-worker.js dist/
+          cp icon-192.png dist/
+          cp icon-512.png dist/
+
+      - name: Report file sizes
+        run: |
+          echo "=== Source size ==="
+          wc -c index.html
+          echo "=== Minified size ==="
+          wc -c dist/index.html
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
