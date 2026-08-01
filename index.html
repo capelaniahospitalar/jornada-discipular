@@ -523,6 +523,7 @@ html,body{font-family:var(--ff-body);background:var(--bg);color:var(--text);min-
     <div>
       <div class="tutor-section-title">Quem irá caminhar com você?</div>
       <p class="tutor-section-sub">Escolha um tutor para acompanhar sua jornada.</p>
+      <div id="invite-tutor-note"></div>
     </div>
 
     <div style="display:flex;flex-direction:column;gap:8px" id="welcome-tutor-list">
@@ -2215,6 +2216,27 @@ function copyLink() {
   });
 }
 
+// Lê o tutor indicado num link de convite (?tutor=0..3), para pré-selecionar
+// o tutor certo assim que o convidado abrir o app.
+function getInviteTutorIdx() {
+  const idx = parseInt(new URLSearchParams(location.search).get('tutor'), 10);
+  return (!isNaN(idx) && TUTORS[idx]) ? idx : null;
+}
+
+// Botão "Convidar um amigo" do Painel do Tutor: abre o WhatsApp do próprio
+// tutor (sem número — ele escolhe o contato) com um link que já vem marcado
+// com esse tutor, para a pessoa convidada entrar direto na lista dele.
+function inviteFriend() {
+  const tutor = getCurrentTutorObj();
+  if (!tutor) return;
+  const idx = TUTORS.indexOf(tutor);
+  const link = `${APP_URL}?tutor=${idx}`;
+  const msg = encodeURIComponent(
+    `Olá! Quero te convidar para uma jornada espiritual: "Aos Pés do Mestre Jesus" — estudos bíblicos interativos e gratuitos, e eu vou te acompanhar de perto como tutor. 🙏\n\nAcesse e comece agora: ${link}`
+  );
+  window.open(`https://wa.me/?text=${msg}`, '_blank');
+}
+
 // ── TUTOR PANEL ───────────────────────────────────────────────────────────────
 // ══════════════════════════════════════
 //  PAINEL DO TUTOR (acompanhamento de discípulos)
@@ -2407,6 +2429,11 @@ function renderTutorMenu(tutor) {
       </button>
       <button onclick="loadTutorList('all')" style="display:flex;align-items:center;gap:10px;width:100%;background:var(--navy);border:none;border-radius:var(--radius-sm);padding:.85rem 1rem;font-size:17.5px;color:#fff;cursor:pointer;font-family:var(--ff-body);text-align:left">
         <span style="font-size:25px">🏛️</span>Visão institucional (todos)
+      </button>
+    </div>
+    <div style="margin-top:.5rem">
+      <button onclick="inviteFriend()" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:#25D366;border:none;border-radius:var(--radius-sm);padding:.85rem 1rem;font-size:17px;font-weight:500;color:#fff;cursor:pointer;font-family:var(--ff-body)">
+        📣 Convidar um amigo
       </button>
     </div>
     <button onclick="renderTutorResetPassFromMenu()" style="margin-top:.5rem;width:100%;background:transparent;border:none;padding:.5rem;font-size:15px;color:var(--text3);cursor:pointer;font-family:var(--ff-body)">🔑 Trocar minha senha</button>
@@ -2979,6 +3006,15 @@ function prefillWelcomeForm() {
   const inp = document.getElementById('user-name-input');
   if (inp && ST.userName) inp.value = ST.userName;
   if (ST.userProfile) selectProfile(ST.userProfile);
+
+  if (ST.tutor === undefined) {
+    const invitedIdx = getInviteTutorIdx();
+    if (invitedIdx !== null) {
+      selectWelcomeTutor(invitedIdx);
+      const note = document.getElementById('invite-tutor-note');
+      if (note) note.innerHTML = `<div style="background:var(--teal-light);border:0.5px solid var(--teal);border-radius:var(--radius-sm);padding:.6rem .85rem;margin-top:.5rem;font-size:15px;color:#04342C;font-family:var(--ff-body)">✉️ Você foi convidado por ${TUTORS[invitedIdx].icon} ${TUTORS[invitedIdx].name} — já deixamos ele selecionado, mas você pode escolher outro se preferir.</div>`;
+    }
+  }
 }
 
 function getMissionsDone() { return ST.missionsDone||[]; }
