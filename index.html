@@ -2285,7 +2285,7 @@ function renderTutorLoginHint() {
     hint.innerHTML = `Você ainda não tem uma senha cadastrada. Digite a senha que deseja usar e clique em "Criar minha senha".`;
   } else {
     btn.innerHTML = '🔐 Entrar';
-    hint.innerHTML = `<a href="#" onclick="renderTutorResetPass();return false" style="color:var(--text3);text-decoration:underline">Esqueci minha senha</a>`;
+    hint.innerHTML = `<a href="#" onclick="renderTutorResetPass(true);return false" style="color:var(--text3);text-decoration:underline">Esqueci minha senha</a>`;
   }
 }
 
@@ -2327,11 +2327,16 @@ async function tutorLogin() {
   renderTutorMenu(tutor);
 }
 
-function renderTutorResetPass() {
+// true = veio do link "Esqueci minha senha" (não deve exigir a senha antiga,
+// mesmo que ST.tutorPanelAuth ainda guarde um login antigo de uma sessão anterior).
+let tutorResetForgotMode = false;
+
+function renderTutorResetPass(forgot) {
+  if (forgot !== undefined) tutorResetForgotMode = forgot;
   const idx = parseInt(document.getElementById('tp-tutor-select').value, 10);
   const tutor = TUTORS[idx];
   const body = document.getElementById('tutorpanel-body');
-  const isAuthenticated = ST.tutorPanelAuth === tutor.name;
+  const isAuthenticated = !tutorResetForgotMode && ST.tutorPanelAuth === tutor.name;
 
   body.innerHTML = `
     <div class="content-card">
@@ -2357,7 +2362,7 @@ function renderTutorResetPass() {
 async function tutorResetPass() {
   const idx = parseInt(document.getElementById('tp-tutor-select')?.value ?? '0', 10);
   const tutor = TUTORS[idx];
-  const isAuthenticated = ST.tutorPanelAuth === tutor.name;
+  const isAuthenticated = !tutorResetForgotMode && ST.tutorPanelAuth === tutor.name;
   const newPass = document.getElementById('tp-new-pass').value;
   const msg = document.getElementById('tp-reset-msg');
 
@@ -2404,7 +2409,7 @@ function renderTutorResetPassFromMenu() {
   // garante que o select interno aponte para o tutor atual, mesmo que a tela de login não esteja renderizada
   const body = document.getElementById('tutorpanel-body');
   body.innerHTML = `<select id="tp-tutor-select" style="display:none">${TUTORS.map((t,i)=>`<option value="${i}" ${i===idx?'selected':''}>${t.name}</option>`).join('')}</select>`;
-  renderTutorResetPass();
+  renderTutorResetPass(false);
 }
 
 function tutorLogout() {
