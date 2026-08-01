@@ -2763,23 +2763,13 @@ function renderDiscipuloDetalhe(idx) {
 
 function openPanel() {
   showScreen('panel');
-  const attrs = getAttrs();
   const lv = getRpgLevel();
   const tutor = ST.tutor !== undefined ? TUTORS[ST.tutor] : null;
   const bossRows = OBSTACLES.filter(o => getObstacleProgress(o)>=100)
     .map(o => `<div class="panel-stat"><span>${o.icon} ${o.label}</span><strong style="color:var(--teal)">✓ Vencido</strong></div>`)
     .join('') || '<div style="font-size:16px;color:var(--text3);padding:.4rem 0">Nenhum ainda</div>';
 
-  const waMsg = tutor ? encodeURIComponent(
-    `Olá ${tutor.name}! Aqui está meu progresso na jornada "Aos Pés do Mestre Jesus":\n\n` +
-    `📊 Nível: ${lv.name}\n` +
-    `✅ Estudos: ${ST.done.length}/${STUDIES.length}\n` +
-    `⭐ XP: ${ST.xp}\n` +
-    `🔥 Sequência: ${ST.streak} dias\n` +
-    `📔 Registros no diário: ${(ST.journal||[]).length}\n\n` +
-    `Atributos espirituais:\n` +
-    ATTRIBUTES.map(a=>`${a.icon} ${a.label}: ${attrs[a.id]||0}`).join('\n')
-  ) : '';
+  const waMsg = tutor ? buildTutorSummaryMsg(tutor) : '';
 
   document.getElementById('panel-body').innerHTML = `
     <div class="content-card">
@@ -3277,15 +3267,69 @@ function saveJournalEntry(studyTitle){
   if (pendingJournalIdx !== null && entry.studyIdx === pendingJournalIdx && hasJournalForStudy(pendingJournalIdx)) {
     const studyXp = STUDIES[entry.studyIdx] ? STUDIES[entry.studyIdx].xp : 0;
     clearPendingJournal();
+    ST.pendingWaSummary = true;
     save(ST);
     showModal({
       title: 'Registro salvo!',
-      message: `+${studyXp} XP do estudo · +${JOURNAL_ENTRY_XP} XP do diário. Seu progresso foi registrado.`,
-      actions: [{ label: 'Voltar ao início', onclick: 'closeModal();goHome()', primary: true }]
+      message: `+${studyXp} XP do estudo · +${JOURNAL_ENTRY_XP} XP do diário.\n\nComo o acompanhamento do seu tutor é feito à distância, agora envie seu resumo geral pelo WhatsApp — é assim que ele consegue saber como você está indo na jornada.`,
+      actions: [{ label: '📲 Enviar resumo no WhatsApp', onclick: 'sendWaSummaryAndContinue()', primary: true }]
     });
   } else {
     switchJTab('entries');
   }
+}
+
+// Envio obrigatório do "Resumo geral" ao tutor pelo WhatsApp, logo após o
+// diário do estudo — o acompanhamento do tutor é à distância, então esse
+// resumo é o que permite ele saber como o discípulo está indo.
+function buildTutorSummaryMsg(tutor) {
+  const attrs = getAttrs();
+  const lv = getRpgLevel();
+  return encodeURIComponent(
+    `Olá ${tutor.name}! Aqui está meu progresso na jornada "Aos Pés do Mestre Jesus":\n\n` +
+    `📊 Nível: ${lv.name}\n` +
+    `✅ Estudos: ${ST.done.length}/${STUDIES.length}\n` +
+    `⭐ XP: ${ST.xp}\n` +
+    `🔥 Sequência: ${ST.streak} dias\n` +
+    `📔 Registros no diário: ${(ST.journal||[]).length}\n\n` +
+    `Atributos espirituais:\n` +
+    ATTRIBUTES.map(a=>`${a.icon} ${a.label}: ${attrs[a.id]||0}`).join('\n')
+  );
+}
+
+function clearPendingWaSummary() {
+  ST.pendingWaSummary = null;
+  save(ST);
+}
+
+function showWaSummaryModal() {
+  const tutor = ST.tutor !== undefined ? TUTORS[ST.tutor] : null;
+  if (!tutor || !tutor.wa) { clearPendingWaSummary(); return; }
+  showModal({
+    title: 'Envie seu resumo ao tutor',
+    message: 'Como o acompanhamento do seu tutor é feito à distância, é preciso enviar seu resumo geral pelo WhatsApp para ele saber como você está indo na jornada.',
+    actions: [{ label: '📲 Enviar resumo no WhatsApp', onclick: 'sendWaSummaryAndContinue()', primary: true }]
+  });
+}
+
+function sendWaSummaryAndContinue() {
+  const tutor = ST.tutor !== undefined ? TUTORS[ST.tutor] : null;
+  if (tutor && tutor.wa) {
+    window.open(`https://wa.me/${tutor.wa}?text=${buildTutorSummaryMsg(tutor)}`, '_blank');
+  }
+  closeModal();
+  clearPendingWaSummary();
+  goHome();
+}
+
+// Se o app foi fechado com o envio do resumo ainda pendente, cobra de novo
+// ao reabrir (mesmo princípio do bloqueio do diário).
+function resumeWaSummaryLock() {
+  if (!ST.pendingWaSummary) return false;
+  showScreen('home');
+  renderHome();
+  showWaSummaryModal();
+  return true;
 }
 
 function showJournalPrompt(studyTitle){
@@ -4227,6 +4271,7 @@ function doRestart() {
   ST.missionsDone    = [];
   ST.badges          = [];
   ST.obstacleActions = {};
+  ST.pendingWaSummary = null;
   clearPendingJournal();
   save(ST);
   goHome();
@@ -4351,7 +4396,7 @@ function initApp() {
   // de uma sessão anterior, mesmo que esse valor tenha ficado salvo.
   ST.tutorPanelAuth = null;
   if (ST.welcomeDone) {
-    if (!resumeJournalLock()) {
+    if (!resumeJournalLock() && !resumeWaSummaryLock()) {
       showScreen('home');
       renderHome();
       checkExportReminder();
