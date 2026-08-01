@@ -2439,57 +2439,10 @@ async function loadTutorList(tutorName) {
 
     if (!data.ok) throw new Error(data.error || 'Erro ao carregar dados');
 
-    const discipulos = data.discipulos || [];
-
-    if (discipulos.length === 0) {
-      body.innerHTML = `
-        <div class="content-card">
-          <div class="phase-tag tag-content">${tutorName === 'all' ? 'Visão institucional' : tutorName}</div>
-          <p class="body-text">Nenhum discípulo encontrado ainda. A lista será atualizada conforme os discípulos avançarem na jornada.</p>
-        </div>
-        <button onclick="renderTutorMenu(getCurrentTutorObj())" style="margin-top:1rem;width:100%;background:var(--card);border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:.75rem;font-size:16px;color:var(--text2);cursor:pointer;font-family:var(--ff-body)">← Voltar</button>`;
-      return;
-    }
-
     // Armazena para acesso no detalhe
-    window._tutorDiscipulos = discipulos;
+    window._tutorDiscipulos = data.discipulos || [];
     window._tutorListContext = tutorName;
-
-    const cards = discipulos.map((d, i) => {
-      const estudos = d.estudos || 0;
-      const pct = Math.round((estudos / 17) * 100);
-      const nivel = d.nivel || '—';
-      const streak = d.streak || 0;
-      const ultima = d.ultimaAtividade ? new Date(d.ultimaAtividade).toLocaleDateString('pt-BR') : '—';
-      const tutorTag = tutorName === 'all'
-        ? `<span style="font-size:12px;background:rgba(255,255,255,0.15);border-radius:10px;padding:2px 8px;margin-left:6px">${d.tutor || '—'}</span>`
-        : '';
-
-      // Barra de progresso
-      const barColor = pct >= 100 ? '#27AE60' : pct >= 50 ? '#2E86C1' : '#D4A017';
-
-      return `
-        <div onclick="renderDiscipuloDetalhe(${i})" style="background:var(--card);border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:.85rem 1rem;margin-bottom:.5rem;cursor:pointer;transition:opacity .15s" onmouseenter="this.style.opacity='.85'" onmouseleave="this.style.opacity='1'">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem">
-            <div style="font-size:16.5px;font-weight:700;color:var(--text)">${d.nome || 'Sem nome'}${tutorTag}</div>
-            <div style="font-size:13px;color:var(--text3)">${d.perfil || ''}</div>
-          </div>
-          <div style="font-size:13px;color:var(--text3);margin-bottom:.5rem">${nivel} · ${estudos}/17 estudos · 🔥 ${streak} dias · Ativo: ${ultima}</div>
-          <div style="height:6px;background:var(--border);border-radius:3px;overflow:hidden">
-            <div style="height:100%;width:${pct}%;background:${barColor};border-radius:3px;transition:width .4s"></div>
-          </div>
-          <div style="font-size:12px;color:var(--text3);margin-top:3px;text-align:right">${pct}% concluído</div>
-        </div>`;
-    }).join('');
-
-    body.innerHTML = `
-      <div class="content-card">
-        <div class="phase-tag tag-content">${tutorName === 'all' ? 'Visão institucional' : tutorName}</div>
-        <p class="body-text">${discipulos.length} discípulo(s) — toque para ver o progresso completo.</p>
-      </div>
-      ${cards}
-      <button onclick="renderTutorMenu(getCurrentTutorObj())" style="margin-top:.5rem;width:100%;background:var(--card);border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:.75rem;font-size:16px;color:var(--text2);cursor:pointer;font-family:var(--ff-body)">← Voltar</button>
-      <button onclick="loadTutorList('${tutorName}')" style="margin-top:.5rem;width:100%;background:transparent;border:none;padding:.5rem;font-size:15px;color:var(--text3);cursor:pointer;font-family:var(--ff-body)">🔄 Atualizar</button>`;
+    renderDiscipuloListBody(tutorName);
 
   } catch (err) {
     body.innerHTML = `
@@ -2499,6 +2452,122 @@ async function loadTutorList(tutorName) {
       </div>
       <button onclick="renderTutorMenu(getCurrentTutorObj())" style="margin-top:1rem;width:100%;background:var(--card);border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:.75rem;font-size:16px;color:var(--text2);cursor:pointer;font-family:var(--ff-body)">← Voltar</button>`;
   }
+}
+
+// ── Excluir discípulo da lista do tutor (só neste aparelho — não mexe nos
+// dados de progresso, guardados no backend) ────────────────────────────────
+function getHiddenDiscipulos() {
+  try { return JSON.parse(localStorage.getItem('amjHiddenDiscipulos') || '[]'); } catch { return []; }
+}
+function setHiddenDiscipulos(list) {
+  try { localStorage.setItem('amjHiddenDiscipulos', JSON.stringify(list)); } catch {}
+}
+function discipuloKey(d) {
+  return (d.nome || '') + '__' + (d.tutor || '');
+}
+
+function confirmHideDiscipulo(idx) {
+  const d = (window._tutorDiscipulos || [])[idx];
+  if (!d) return;
+  showModal({
+    title: 'Excluir da lista?',
+    message: `"${d.nome || 'Este discípulo'}" vai sumir do seu painel. O progresso dele continua guardado normalmente — você pode trazer de volta quando quiser, tocando em "Mostrar ocultados".`,
+    actions: [
+      { label: 'Cancelar',        onclick: 'closeModal()',                        primary: false },
+      { label: 'Excluir da lista', onclick: `closeModal();hideDiscipulo(${idx})`, primary: true  }
+    ]
+  });
+}
+
+function hideDiscipulo(idx) {
+  const d = (window._tutorDiscipulos || [])[idx];
+  if (!d) return;
+  const hidden = getHiddenDiscipulos();
+  const key = discipuloKey(d);
+  if (!hidden.includes(key)) hidden.push(key);
+  setHiddenDiscipulos(hidden);
+  renderDiscipuloListBody(window._tutorListContext || 'all');
+}
+
+function unhideAllDiscipulos(tutorName) {
+  setHiddenDiscipulos([]);
+  renderDiscipuloListBody(tutorName);
+}
+
+function renderDiscipuloListBody(tutorName) {
+  const body = document.getElementById('tutorpanel-body');
+  const discipulos = window._tutorDiscipulos || [];
+  const hidden = getHiddenDiscipulos();
+  const voltarBtn = `<button onclick="renderTutorMenu(getCurrentTutorObj())" style="margin-top:.5rem;width:100%;background:var(--card);border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:.75rem;font-size:16px;color:var(--text2);cursor:pointer;font-family:var(--ff-body)">← Voltar</button>`;
+
+  const visible = discipulos
+    .map((d, i) => ({ d, i }))
+    .filter(({ d }) => !hidden.includes(discipuloKey(d)));
+  const hiddenCount = discipulos.length - visible.length;
+  const mostrarBtn = hiddenCount
+    ? `<button onclick="unhideAllDiscipulos('${tutorName}')" style="margin-top:.3rem;width:100%;background:transparent;border:none;padding:.5rem;font-size:14px;color:var(--text3);cursor:pointer;font-family:var(--ff-body)">↩️ Mostrar ${hiddenCount} oculto(s)</button>`
+    : '';
+
+  if (discipulos.length === 0) {
+    body.innerHTML = `
+      <div class="content-card">
+        <div class="phase-tag tag-content">${tutorName === 'all' ? 'Visão institucional' : tutorName}</div>
+        <p class="body-text">Nenhum discípulo encontrado ainda. A lista será atualizada conforme os discípulos avançarem na jornada.</p>
+      </div>
+      ${voltarBtn}`;
+    return;
+  }
+
+  if (visible.length === 0) {
+    body.innerHTML = `
+      <div class="content-card">
+        <div class="phase-tag tag-content">${tutorName === 'all' ? 'Visão institucional' : tutorName}</div>
+        <p class="body-text">Todos os discípulos estão ocultos no momento.</p>
+      </div>
+      ${mostrarBtn}
+      ${voltarBtn}`;
+    return;
+  }
+
+  const cards = visible.map(({ d, i }) => {
+    const estudos = d.estudos || 0;
+    const pct = Math.round((estudos / 17) * 100);
+    const nivel = d.nivel || '—';
+    const streak = d.streak || 0;
+    const ultima = d.ultimaAtividade ? new Date(d.ultimaAtividade).toLocaleDateString('pt-BR') : '—';
+    const tutorTag = tutorName === 'all'
+      ? `<span style="font-size:12px;background:rgba(255,255,255,0.15);border-radius:10px;padding:2px 8px;margin-left:6px">${d.tutor || '—'}</span>`
+      : '';
+
+    // Barra de progresso
+    const barColor = pct >= 100 ? '#27AE60' : pct >= 50 ? '#2E86C1' : '#D4A017';
+
+    return `
+      <div style="background:var(--card);border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:.85rem 1rem;margin-bottom:.5rem">
+        <div onclick="renderDiscipuloDetalhe(${i})" style="cursor:pointer;transition:opacity .15s" onmouseenter="this.style.opacity='.85'" onmouseleave="this.style.opacity='1'">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem">
+            <div style="font-size:16.5px;font-weight:700;color:var(--text)">${d.nome || 'Sem nome'}${tutorTag}</div>
+            <div style="font-size:13px;color:var(--text3)">${d.perfil || ''}</div>
+          </div>
+          <div style="font-size:13px;color:var(--text3);margin-bottom:.5rem">${nivel} · ${estudos}/17 estudos · 🔥 ${streak} dias · Ativo: ${ultima}</div>
+          <div style="height:6px;background:var(--border);border-radius:3px;overflow:hidden">
+            <div style="height:100%;width:${pct}%;background:${barColor};border-radius:3px;transition:width .4s"></div>
+          </div>
+          <div style="font-size:12px;color:var(--text3);margin-top:3px;text-align:right">${pct}% concluído</div>
+        </div>
+        <button onclick="confirmHideDiscipulo(${i})" style="margin-top:.6rem;width:100%;background:transparent;border:0.5px solid rgba(224,80,80,0.4);border-radius:6px;padding:.5rem;font-size:14px;color:#E05050;cursor:pointer;font-family:var(--ff-body)">🗑️ Excluir</button>
+      </div>`;
+  }).join('');
+
+  body.innerHTML = `
+    <div class="content-card">
+      <div class="phase-tag tag-content">${tutorName === 'all' ? 'Visão institucional' : tutorName}</div>
+      <p class="body-text">${visible.length} discípulo(s) — toque para ver o progresso completo.</p>
+    </div>
+    ${cards}
+    ${mostrarBtn}
+    ${voltarBtn}
+    <button onclick="loadTutorList('${tutorName}')" style="margin-top:.5rem;width:100%;background:transparent;border:none;padding:.5rem;font-size:15px;color:var(--text3);cursor:pointer;font-family:var(--ff-body)">🔄 Atualizar</button>`;
 }
 
 function renderDiscipuloDetalhe(idx) {
