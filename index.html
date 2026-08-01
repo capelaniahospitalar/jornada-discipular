@@ -3058,7 +3058,11 @@ function renderJournal(){
   if(jTab==='entries'){
     const entries=(ST.journal||[]).slice().reverse();
     if(!entries.length){ body.innerHTML=`<div class="journal-empty">Nenhum registro ainda.<br>Após cada estudo, registre o que Deus falou com você.</div>`; return; }
-    body.innerHTML=entries.map(e=>`
+    const xpSummary = `<div style="display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem .25rem">
+      <span class="sec-label" style="padding:0">📔 ${entries.length} registro(s)</span>
+      <span class="mission-xp">+${entries.length * JOURNAL_ENTRY_XP} XP no diário</span>
+    </div>`;
+    body.innerHTML=xpSummary+entries.map(e=>`
       <div class="journal-entry-wrap">
         <div class="journal-entry-hdr"><span>${escapeHTML(e.study||'Registro')}</span><small>${escapeHTML(formatJournalDate(e.date))}</small></div>
         <div class="journal-entry-body">
@@ -3086,6 +3090,8 @@ function renderJournal(){
   }
 }
 
+const JOURNAL_ENTRY_XP = 20;
+
 function saveJournalEntry(studyTitle){
   const get=id=>document.getElementById(id)?.value.trim()||'';
   const entry={study:studyTitle,date:new Date().toISOString(),
@@ -3095,10 +3101,14 @@ function saveJournalEntry(studyTitle){
   if(!Object.entries(entry).filter(([k])=>!['study','date','studyIdx'].includes(k)).some(([,v])=>v)) return;
   if(!ST.journal) ST.journal=[];
   ST.journal.push(entry);
+  ST.xp += JOURNAL_ENTRY_XP;
   save(ST);
   checkAutoMissions();
   updateCompleteHomeBtn();
   if (pendingJournalIdx !== null && entry.studyIdx === pendingJournalIdx && hasJournalForStudy(pendingJournalIdx)) {
+    const studyXp = STUDIES[entry.studyIdx] ? STUDIES[entry.studyIdx].xp : 0;
+    const cxp = document.getElementById('c-xp');
+    if (cxp) cxp.textContent = `+${studyXp} XP do estudo · +${JOURNAL_ENTRY_XP} XP do diário`;
     clearPendingJournal();
     save(ST);
     showScreen('complete');
