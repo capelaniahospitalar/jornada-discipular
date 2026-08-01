@@ -2477,7 +2477,7 @@ function confirmHideDiscipulo(idx) {
   if (!d) return;
   showModal({
     title: 'Excluir da lista?',
-    message: `"${d.nome || 'Este discípulo'}" vai sumir do seu painel. O progresso dele continua guardado normalmente — você pode trazer de volta quando quiser, tocando em "Mostrar ocultados".`,
+    message: `"${d.nome || 'Este discípulo'}" vai sumir do seu painel. O progresso dele continua guardado normalmente — você pode trazer de volta quando quiser, tocando em "Ver ocultos".`,
     actions: [
       { label: 'Cancelar',        onclick: 'closeModal()',                        primary: false },
       { label: 'Excluir da lista', onclick: `closeModal();hideDiscipulo(${idx})`, primary: true  }
@@ -2495,9 +2495,58 @@ function hideDiscipulo(idx) {
   renderDiscipuloListBody(window._tutorListContext || 'all');
 }
 
-function unhideAllDiscipulos(tutorName) {
-  setHiddenDiscipulos([]);
-  renderDiscipuloListBody(tutorName);
+function unhideDiscipulo(idx, tutorName) {
+  const d = (window._tutorDiscipulos || [])[idx];
+  if (!d) return;
+  const key = discipuloKey(d);
+  setHiddenDiscipulos(getHiddenDiscipulos().filter(k => k !== key));
+  showHiddenDiscipulos(tutorName);
+}
+
+function confirmUnhideAllDiscipulos(tutorName) {
+  showModal({
+    title: 'Restaurar todos?',
+    message: 'Todos os discípulos ocultos voltam a aparecer na sua lista.',
+    actions: [
+      { label: 'Cancelar',        onclick: 'closeModal()',                                        primary: false },
+      { label: 'Restaurar todos', onclick: `closeModal();setHiddenDiscipulos([]);renderDiscipuloListBody('${tutorName}')`, primary: true }
+    ]
+  });
+}
+
+function showHiddenDiscipulos(tutorName) {
+  const body = document.getElementById('tutorpanel-body');
+  const discipulos = window._tutorDiscipulos || [];
+  const hidden = getHiddenDiscipulos();
+  const hiddenEntries = discipulos
+    .map((d, i) => ({ d, i }))
+    .filter(({ d }) => hidden.includes(discipuloKey(d)));
+  const voltarListaBtn = `<button onclick="renderDiscipuloListBody('${tutorName}')" style="margin-top:.5rem;width:100%;background:var(--card);border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:.75rem;font-size:16px;color:var(--text2);cursor:pointer;font-family:var(--ff-body)">← Voltar à lista</button>`;
+
+  if (hiddenEntries.length === 0) {
+    body.innerHTML = `
+      <div class="content-card">
+        <div class="phase-tag tag-content">Discípulos ocultos</div>
+        <p class="body-text">Nenhum discípulo oculto no momento.</p>
+      </div>
+      ${voltarListaBtn}`;
+    return;
+  }
+
+  const cards = hiddenEntries.map(({ d, i }) => `
+    <div style="background:var(--card);border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:.85rem 1rem;margin-bottom:.5rem;display:flex;justify-content:space-between;align-items:center;gap:10px">
+      <div style="font-size:16px;font-weight:600;color:var(--text)">${d.nome || 'Sem nome'}</div>
+      <button onclick="unhideDiscipulo(${i},'${tutorName}')" style="flex-shrink:0;background:var(--teal);border:none;border-radius:6px;padding:.5rem .9rem;font-size:14px;color:#fff;cursor:pointer;font-family:var(--ff-body);white-space:nowrap">↩️ Restaurar</button>
+    </div>`).join('');
+
+  body.innerHTML = `
+    <div class="content-card">
+      <div class="phase-tag tag-content">Discípulos ocultos</div>
+      <p class="body-text">${hiddenEntries.length} discípulo(s) escondido(s) da sua lista. Toque em "Restaurar" para trazer de volta cada um.</p>
+    </div>
+    ${cards}
+    <button onclick="confirmUnhideAllDiscipulos('${tutorName}')" style="margin-top:.3rem;width:100%;background:transparent;border:none;padding:.5rem;font-size:14px;color:var(--text3);cursor:pointer;font-family:var(--ff-body)">Restaurar todos de uma vez</button>
+    ${voltarListaBtn}`;
 }
 
 function renderDiscipuloListBody(tutorName) {
@@ -2511,7 +2560,7 @@ function renderDiscipuloListBody(tutorName) {
     .filter(({ d }) => !hidden.includes(discipuloKey(d)));
   const hiddenCount = discipulos.length - visible.length;
   const mostrarBtn = hiddenCount
-    ? `<button onclick="unhideAllDiscipulos('${tutorName}')" style="margin-top:.3rem;width:100%;background:transparent;border:none;padding:.5rem;font-size:14px;color:var(--text3);cursor:pointer;font-family:var(--ff-body)">↩️ Mostrar ${hiddenCount} oculto(s)</button>`
+    ? `<button onclick="showHiddenDiscipulos('${tutorName}')" style="margin-top:.3rem;width:100%;background:transparent;border:none;padding:.5rem;font-size:14px;color:var(--text3);cursor:pointer;font-family:var(--ff-body)">↩️ Ver ${hiddenCount} oculto(s)</button>`
     : '';
 
   if (discipulos.length === 0) {
