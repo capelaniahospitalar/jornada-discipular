@@ -3107,11 +3107,13 @@ function saveJournalEntry(studyTitle){
   updateCompleteHomeBtn();
   if (pendingJournalIdx !== null && entry.studyIdx === pendingJournalIdx && hasJournalForStudy(pendingJournalIdx)) {
     const studyXp = STUDIES[entry.studyIdx] ? STUDIES[entry.studyIdx].xp : 0;
-    const cxp = document.getElementById('c-xp');
-    if (cxp) cxp.textContent = `+${studyXp} XP do estudo · +${JOURNAL_ENTRY_XP} XP do diário`;
     clearPendingJournal();
     save(ST);
-    showScreen('complete');
+    showModal({
+      title: 'Registro salvo!',
+      message: `+${studyXp} XP do estudo · +${JOURNAL_ENTRY_XP} XP do diário. Seu progresso foi registrado.`,
+      actions: [{ label: 'Voltar ao início', onclick: 'closeModal();goHome()', primary: true }]
+    });
   } else {
     switchJTab('entries');
   }
