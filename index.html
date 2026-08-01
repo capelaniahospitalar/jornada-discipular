@@ -2223,7 +2223,13 @@ const TUTOR_PANEL_URL = 'https://script.google.com/macros/s/AKfycbz1eoMpd6OwunBW
 
 function openTutorPanel() {
   showScreen('tutorpanel');
-  renderTutorLogin();
+  // Se o tutor já entrou com a senha nesta visita ao app, não pede de novo.
+  const tutor = getCurrentTutorObj();
+  if (tutor) {
+    renderTutorMenu(tutor);
+  } else {
+    renderTutorLogin();
+  }
 }
 
 // ── senhas dos tutores (persistidas no dispositivo) ────────────────────────
@@ -4256,6 +4262,9 @@ function resumeJournalLock() {
 }
 
 function initApp() {
+  // Login do tutor vale só para esta visita ao app — nunca entra já logado
+  // de uma sessão anterior, mesmo que esse valor tenha ficado salvo.
+  ST.tutorPanelAuth = null;
   if (ST.welcomeDone) {
     if (!resumeJournalLock()) {
       showScreen('home');
