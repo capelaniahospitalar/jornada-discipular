@@ -3099,6 +3099,8 @@ function saveJournalEntry(studyTitle){
   checkAutoMissions();
   updateCompleteHomeBtn();
   if (pendingJournalIdx !== null && entry.studyIdx === pendingJournalIdx && hasJournalForStudy(pendingJournalIdx)) {
+    clearPendingJournal();
+    save(ST);
     showScreen('complete');
   } else {
     switchJTab('entries');
@@ -3109,8 +3111,8 @@ function showJournalPrompt(studyTitle){
   const cn=document.getElementById('c-next');
   cn.innerHTML+=`
     <div style="background:var(--gold-pale);border:0.5px solid rgba(184,134,11,0.25);border-radius:var(--radius-sm);padding:.85rem 1rem;width:100%;margin-top:.5rem">
-      <div style="font-size:14px;color:var(--gold);text-transform:uppercase;letter-spacing:.8px;margin-bottom:.35rem;font-family:var(--ff-body)">📔 Diário Espiritual</div>
-      <p style="font-size:16px;color:#3D2B00;margin-bottom:.6rem;font-family:var(--ff-body)">Antes de continuar, registre o que Deus falou com você neste estudo.</p>
+      <div style="font-size:14px;color:var(--gold);text-transform:uppercase;letter-spacing:.8px;margin-bottom:.35rem;font-family:var(--ff-body)">📔 Diário Espiritual — registro obrigatório</div>
+      <p style="font-size:16px;color:#3D2B00;margin-bottom:.6rem;font-family:var(--ff-body)">Antes de continuar, registre o que Deus falou com você neste estudo. Como este é um estudo solo e a distância, sem um tutor ao seu lado a cada passo, o diário é o que garante que o que você aprendeu vire reflexão pessoal e decisão prática — por isso ele é indispensável para o seu crescimento espiritual.</p>
       <button onclick="jTab='new';openJournal()" style="background:var(--navy);color:#fff;border:none;border-radius:6px;padding:.6rem 1rem;font-size:16px;cursor:pointer;font-family:var(--ff-body);width:100%">Abrir diário</button>
     </div>`;
 }
@@ -3561,6 +3563,8 @@ function migrateSchema(st) {
     st.obstacleActions = st.obstacleActions || {};
     st.missionsDone    = st.missionsDone    || [];
     st.lastExportReminder = st.lastExportReminder || null;
+    st.pendingJournalIdx   = (st.pendingJournalIdx   === undefined) ? null : st.pendingJournalIdx;
+    st.pendingJournalTitle = (st.pendingJournalTitle === undefined) ? null : st.pendingJournalTitle;
     st._v = 1;
   }
   // Futuras migrações: if (st._v === 1) { ...; st._v = 2; }
@@ -3717,6 +3721,22 @@ function renderHome() {
 let curIdx = 0, curPhase = 0, answered = false;
 let pendingJournalIdx = null, pendingJournalTitle = null;
 
+// Persistido em ST para sobreviver a fechar/recarregar o app: sem isso, o
+// registro obrigatório do diário podia ser burlado fechando o app antes de escrever.
+function setPendingJournal(idx, title) {
+  pendingJournalIdx = idx;
+  pendingJournalTitle = title;
+  ST.pendingJournalIdx = idx;
+  ST.pendingJournalTitle = title;
+  save(ST);
+}
+function clearPendingJournal() {
+  pendingJournalIdx = null;
+  pendingJournalTitle = null;
+  ST.pendingJournalIdx = null;
+  ST.pendingJournalTitle = null;
+}
+
 function getReflectionLock() {
   // Retorna { locked: bool, remainingMs: number, unlockAt: timestamp } para o próximo estudo
   const nextIdx = ST.done.length;
@@ -3866,8 +3886,21 @@ function completeStudy() {
     save(ST);
   }
 
+  renderCompleteScreen(curIdx, newBadge);
+
+  showScreen('complete');
+  // Registro no diário obrigatório antes de voltar ao início: é um estudo
+  // solo e a distância, sem tutor presencial, e o diário é o que garante
+  // que o aprendizado vire reflexão e decisão prática — não fique só na leitura.
+  setPendingJournal(curIdx, s.title);
+  showJournalPrompt(s.title);
+  updateCompleteHomeBtn();
+}
+
+function renderCompleteScreen(idx, newBadge) {
+  const s = STUDIES[idx];
   const icons = ['🌿','📖','🙏','💛','❤️','🏛️','🌊','🌱','☁️','🌿','🕍','🌅','📜','✡️','⚖️','✝️'];
-  document.getElementById('c-icon').textContent = icons[curIdx] || '🌟';
+  document.getElementById('c-icon').textContent = icons[idx] || '🌟';
   document.getElementById('c-title').textContent = 'Estudo concluído!';
   document.getElementById('c-sub').textContent = `"${s.title}" — mais um passo na caminhada com Jesus.`;
   document.getElementById('c-xp').textContent = '+' + s.xp + ' XP ganhos';
@@ -3893,7 +3926,7 @@ function completeStudy() {
       <div class="sec-label" style="padding:.85rem 0 .3rem">Estudos anteriores</div>
       <div style="background:var(--card);border:0.5px solid var(--border);border-radius:var(--radius-sm);overflow:hidden">
         ${prevStudies.map(i => `
-          <div class="prev-item" onclick="goHome();setTimeout(()=>openStudy(${i}),50)">
+          <div class="prev-item" onclick="reviewPrevStudy(${i})">
             <div class="prev-num">✓</div>
             <div class="prev-info">
               <div class="prev-title">${STUDIES[i].title}</div>
@@ -3905,13 +3938,18 @@ function completeStudy() {
   } else {
     prevDone.innerHTML = '';
   }
+}
 
-  showScreen('complete');
-  // Phase 2: show journal prompt (obrigatório antes de voltar ao início)
-  pendingJournalIdx = curIdx;
-  pendingJournalTitle = s.title;
-  showJournalPrompt(s.title);
-  updateCompleteHomeBtn();
+function reviewPrevStudy(i) {
+  // Não deixa fugir para a Home clicando num estudo anterior enquanto
+  // o diário do estudo recém-concluído ainda estiver pendente.
+  if (pendingJournalIdx !== null && !hasJournalForStudy(pendingJournalIdx)) {
+    jTab = 'new';
+    openJournal();
+    return;
+  }
+  goHome();
+  setTimeout(() => openStudy(i), 50);
 }
 
 function hasJournalForStudy(idx){
@@ -4008,8 +4046,7 @@ function doRestart() {
   ST.missionsDone    = [];
   ST.badges          = [];
   ST.obstacleActions = {};
-  pendingJournalIdx   = null;
-  pendingJournalTitle = null;
+  clearPendingJournal();
   save(ST);
   goHome();
 }
@@ -4113,14 +4150,31 @@ function checkExportReminder() {
   });
 }
 
+// Se o app foi fechado/recarregado com um registro de diário pendente,
+// retoma o bloqueio em vez de deixar entrar direto na Home.
+function resumeJournalLock() {
+  const idx = (ST.pendingJournalIdx !== undefined) ? ST.pendingJournalIdx : null;
+  if (idx === null || hasJournalForStudy(idx)) return false;
+  curIdx = idx;
+  pendingJournalIdx = idx;
+  pendingJournalTitle = ST.pendingJournalTitle;
+  renderCompleteScreen(idx, null);
+  showScreen('complete');
+  showJournalPrompt(pendingJournalTitle);
+  updateCompleteHomeBtn();
+  return true;
+}
+
 function initApp() {
   if (ST.welcomeDone) {
-    showScreen('home');
-    renderHome();
+    if (!resumeJournalLock()) {
+      showScreen('home');
+      renderHome();
+      checkExportReminder();
+    }
     if (ST.tutor !== undefined) {
       renderFixedTutorBtn(TUTORS[ST.tutor]);
     }
-    checkExportReminder();
   } else {
     showScreen('welcome');
   }
